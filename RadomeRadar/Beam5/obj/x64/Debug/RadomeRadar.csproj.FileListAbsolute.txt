@@ -1,0 +1,12 @@
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.RenderControl.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.CreateApertureForm.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.CreateRadomeForm.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.CreateStenkaForm.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.FarFieldRequestForm.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.LoadApertureForm.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.SetFrequencyForm.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.UnitForm.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.Form1.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\Apparat.Properties.Resources.resources
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\RadomeRadar.csproj.GenerateResource.cache
+C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\Beam5\obj\x64\Debug\RadomeRadar.csproj.CoreCompileInputs.cache
