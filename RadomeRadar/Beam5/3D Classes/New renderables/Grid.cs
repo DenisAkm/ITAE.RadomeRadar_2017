@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SlimDX.D3DCompiler;
-using SlimDX;
-using SlimDX.Direct3D11;
-using SlimDX.DXGI;
+﻿using SharpDX;
+using SharpDX.Direct3D11;
 using Apparat.ShaderManagement;
-using System.Drawing;
+using SharpDX.Direct3D;
+using Buffer = SharpDX.Direct3D11.Buffer;
 
 namespace Apparat
 {
     public class Grid : Renderable
     {
-        SlimDX.Direct3D11.Buffer vertexBuffer;
+        Buffer vertexBuffer;
         DataStream vertices;
-        Color color = Color.FromArgb(255, 51, 51, 51);
+        Color4 color = new Color4(Color.Gray.ToColor3());
         int numVertices = 0;
 
         public Grid(float sizeArrange)
@@ -53,7 +48,7 @@ namespace Apparat
             vertices.Position = 0;
 
             // create the vertex buffer            
-            vertexBuffer = new SlimDX.Direct3D11.Buffer(DeviceManager.Instance.device, vertices, SizeInBytes, ResourceUsage.Default, BindFlags.VertexBuffer, CpuAccessFlags.None, ResourceOptionFlags.None, 0);
+            vertexBuffer = new Buffer(DeviceManager.Instance.device, vertices, SizeInBytes, ResourceUsage.Default, BindFlags.VertexBuffer, CpuAccessFlags.None, ResourceOptionFlags.None, 0);
         }
 
         EffectWrapperTransformEffect ew = ShaderManager.Instance.transformEffect;
@@ -61,10 +56,10 @@ namespace Apparat
         public override void Render()
         {
             Matrix ViewPerspective = CameraManager.Instance.ViewPerspective;
-            Matrix WorldViewPerspective = this.transform * ViewPerspective;
+            Matrix WorldViewPerspective = transform * ViewPerspective;
             ew.tmat.SetMatrix(WorldViewPerspective);
 
-            ew.mCol.Set(new Color4(1, color.R / 255.0f, color.G / 255.0f, color.B / 255.0f));
+            ew.mCol.Set(color);
             
             // configure the Input Assembler portion of the pipeline with the vertex data
             DeviceManager.Instance.context.InputAssembler.InputLayout = ew.layout;
@@ -91,11 +86,11 @@ namespace Apparat
         {
             get
             {
-                return this.transform;
+                return transform;
             }
             set
             {
-                this.transform = value;
+                transform = value;
             }
         }
     }

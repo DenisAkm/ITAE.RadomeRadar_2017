@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SlimDX.D3DCompiler;
-using SlimDX;
-using SlimDX.Direct3D11;
-using SlimDX.DXGI;
+using SharpDX.D3DCompiler;
+using SharpDX;
+using SharpDX.Direct3D11;
+using SharpDX.DXGI;
 using System.Runtime.InteropServices;
 using System.IO;
 
@@ -15,7 +15,7 @@ namespace Apparat
     {
         public ShaderBytecode effectByteCode;
         public Effect effect;
-        public ShaderSignature inputSignature;
+        public ShaderBytecode inputSignature;
         public EffectTechnique technique;
         public EffectPass pass;
         public InputLayout layout;
@@ -36,7 +36,7 @@ namespace Apparat
         public EffectScalarVariable SpecularPower;
 
         // Texture
-        public EffectResourceVariable TextureVariable;
+        public EffectShaderResourceVariable TextureVariable;
 
         InputElement[] elements = new[] { 
                 new InputElement("POSITION", 0, Format.R32G32B32_Float, 0),
@@ -81,7 +81,7 @@ namespace Apparat
 
                 SpecularPower = effect.GetVariableByName("SpecularPower").AsScalar();
 
-                TextureVariable = effect.GetVariableByName("Texture").AsResource();
+                TextureVariable = effect.GetVariableByName("Texture").AsShaderResource();
             }
             catch (Exception ex)
             {

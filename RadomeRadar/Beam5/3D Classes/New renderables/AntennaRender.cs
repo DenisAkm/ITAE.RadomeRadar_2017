@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using SlimDX.D3DCompiler;
-using SlimDX;
-using SlimDX.Direct3D11;
-using SlimDX.DXGI;
+using SharpDX.D3DCompiler;
+using SharpDX;
+using SharpDX.Direct3D11;
+using SharpDX.DXGI;
 using System.Runtime.InteropServices;
 using Apparat.ShaderManagement;
+using Color = SharpDX.Color;
+using SharpDX.Direct3D;
 
 namespace Apparat
 {
     public class AntennaMesh : Renderable
     {
-        SlimDX.Direct3D11.Buffer vertexBuffer;
-        SlimDX.Direct3D11.Buffer indexBuffer;
+        SharpDX.Direct3D11.Buffer vertexBuffer;
+        SharpDX.Direct3D11.Buffer indexBuffer;
         DataStream vertices;
         DataStream indices;
 
@@ -45,7 +47,7 @@ namespace Apparat
 
 
             float a, b, c;                        
-            int arbgColor = color.ToArgb();
+            int arbgColor = color.ToRgba();
 
             for (int i = 0; i < x.Count; i++)
             {
@@ -57,7 +59,7 @@ namespace Apparat
 
             vertices.Position = 0;
 
-            vertexBuffer = new SlimDX.Direct3D11.Buffer(
+            vertexBuffer = new SharpDX.Direct3D11.Buffer(
                DeviceManager.Instance.device,
                vertices,
                vertexBufferSizeInBytes,
@@ -88,7 +90,7 @@ namespace Apparat
 
             indices.Position = 0;
 
-            indexBuffer = new SlimDX.Direct3D11.Buffer(
+            indexBuffer = new SharpDX.Direct3D11.Buffer(
                 DeviceManager.Instance.device,
                 indices,
                 indexBufferSizeInBytes,
@@ -113,19 +115,19 @@ namespace Apparat
 
 
             float a, b, c;
-            int arbgColor = color.ToArgb();
+            int arbgColor = color.ToRgba();
 
             for (int i = 0; i < numVertices; i++)
             {
                 a = Convert.ToSingle(points[i].X);
                 b = Convert.ToSingle(points[i].Y);
                 c = Convert.ToSingle(points[i].Z);
-                vertices.Write(new PositionColoredVertex(new Vector3(a, c, b), arbgColor));
+                vertices.Write(new PositionColoredVertex(a, c, b, arbgColor));
             }
 
             vertices.Position = 0;
 
-            vertexBuffer = new SlimDX.Direct3D11.Buffer(
+            vertexBuffer = new SharpDX.Direct3D11.Buffer(
                DeviceManager.Instance.device,
                vertices,
                vertexBufferSizeInBytes,
@@ -156,7 +158,7 @@ namespace Apparat
 
             indices.Position = 0;
 
-            indexBuffer = new SlimDX.Direct3D11.Buffer(
+            indexBuffer = new SharpDX.Direct3D11.Buffer(
                 DeviceManager.Instance.device,
                 indices,
                 indexBufferSizeInBytes,
@@ -182,9 +184,8 @@ namespace Apparat
             DeviceManager.Instance.context.InputAssembler.SetIndexBuffer(indexBuffer, Format.R16_UInt, 0);
 
             ew.technique = ew.effect.GetTechniqueByName("Render");
-
-            EffectTechniqueDescription techDesc;
-            techDesc = ew.technique.Description;
+                        
+            EffectTechniqueDescription techDesc = ew.technique.Description;
 
             for (int p = 0; p < techDesc.PassCount; ++p)
             {

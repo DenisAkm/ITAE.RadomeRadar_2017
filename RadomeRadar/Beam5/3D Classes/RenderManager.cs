@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using SlimDX;
-using SlimDX.DXGI;
+using SharpDX;
+using SharpDX.DXGI;
 using System.Diagnostics;
-using SlimDX.Direct3D11;
+using SharpDX.Direct3D11;
 using Apparat;
 using System.Drawing;
+using Color = SharpDX.Color;
 
 namespace Apparat
 {
@@ -74,7 +75,7 @@ namespace Apparat
                   0);
 
                 dm.context.ClearRenderTargetView(dm.renderTarget,
-                  new Color4(Color.Black.R, Color.Black.G, Color.Black.B));//0.75f, 0.75f, 0.75f
+                  new Color4(Color3.Black));//0.75f, 0.75f, 0.75f
 
                 Scene.Instance.Render();
 
@@ -82,7 +83,7 @@ namespace Apparat
 
                 if (makeScreenshot)
                 {
-                    screenShots.MakeScreenshot(DeviceManager.Instance, ImageFileFormat.Jpg);
+                    //screenShots.MakeScreenshot(DeviceManager.Instance, ImageFileFormat.Jpg);
                     // screenShots.MakeScreenshot(DeviceManager.Instance, Scene.Instance, 3000, 2000, ImageFileFormat.Jpg, "screenShot");
                     makeScreenshot = false;
                 }

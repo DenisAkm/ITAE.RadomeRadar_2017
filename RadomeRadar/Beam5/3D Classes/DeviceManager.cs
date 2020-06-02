@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Resource = SlimDX.Direct3D11.Resource;
-using Device = SlimDX.Direct3D11.Device;
-using SlimDX;
-using SlimDX.Direct3D11;
-using SlimDX.DXGI;
+using Resource = SharpDX.Direct3D11.Resource;
+using Device = SharpDX.Direct3D11.Device;
+using SharpDX;
+using SharpDX.Direct3D11;
+using SharpDX.Direct3D;
+using SharpDX.DXGI;
 using System.Collections.ObjectModel;
 
 
@@ -63,11 +64,13 @@ namespace Apparat
                 formats.Add(format);
             }
 
-            List<ReadOnlyCollection<ModeDescription>> ll = new List<ReadOnlyCollection<ModeDescription>>();
+            //List<ReadOnlyCollection<ModeDescription>> ll = new List<ReadOnlyCollection<ModeDescription>>();
+            List<ModeDescription[]> ll = new List<ModeDescription[]>();
 
             for (int i = 0; i < formats.Count - 1; i++)
             {
-                ReadOnlyCollection<ModeDescription> mdl;
+                //ReadOnlyCollection<ModeDescription> mdl;
+                ModeDescription[] mdl;
                 mdl = outp.GetDisplayModeList(formats[i], DisplayModeEnumerationFlags.Interlaced);
                 ll.Add(mdl);
                 if (mdl != null)
@@ -106,13 +109,13 @@ namespace Apparat
 
             // setting a viewport is required if you want to actually see anything
             context = device.ImmediateContext;
-            viewport = new Viewport(0.0f, 0.0f, form.ClientSize.Width, form.ClientSize.Height);
+            viewport = new Viewport(0, 0, form.ClientSize.Width, form.ClientSize.Height);
             context.OutputMerger.SetTargets(renderTarget);
-            context.Rasterizer.SetViewports(viewport);
+            context.Rasterizer.SetViewport(viewport);
 
             // prevent DXGI handling of alt+enter, which doesn't work properly with Winforms
-            using (var factory = swapChain.GetParent<Factory>())
-                factory.SetWindowAssociation(form.Handle, WindowAssociationFlags.IgnoreAltEnter);
+            //using (var factory = swapChain.GetParent<Factory>())
+            //    factory.SetWindowAssociation(form.Handle, WindowAssociationFlags.IgnoreAltEnter);
 
             // handle alt+enter ourselves
             form.KeyDown += (o, e) =>
@@ -159,21 +162,21 @@ namespace Apparat
 
             depthStencil = new DepthStencilView(
                device,
-               DSTexture,
-               new DepthStencilViewDescription()
-               {
-                   ArraySize = 0,
-                   FirstArraySlice = 0,
-                   MipSlice = 0,
-                   Format = Format.D32_Float,
-                   Dimension = DepthStencilViewDimension.Texture2D
-               }
+               DSTexture
            );
+            //new DepthStencilViewDescription()
+            //{
+            //    ArraySize = 0,
+            //    FirstArraySlice = 0,
+            //    MipSlice = 0,
+            //    Format = Format.D32_Float,
+            //    Dimension = DepthStencilViewDimension.Texture2D
+            //}
 
             if (dss != null)
                 dss.Dispose();
 
-            dss = DepthStencilState.FromDescription(
+            dss = new DepthStencilState(
                device,
                new DepthStencilStateDescription()
                {
@@ -196,8 +199,7 @@ namespace Apparat
                 DepthComparison = Comparison.Less,
             };
 
-
-            depthStencilStateNormal = DepthStencilState.FromDescription(DeviceManager.Instance.device, dssd);
+            depthStencilStateNormal = new DepthStencilState(DeviceManager.Instance.device, dssd);
             DeviceManager.Instance.context.OutputMerger.DepthStencilState = depthStencilStateNormal;
         }
 
@@ -242,8 +244,8 @@ namespace Apparat
 
                 CreateDepthStencilBuffer(form);
 
-                viewport = new Viewport(0.0f, 0.0f, form.ClientSize.Width, form.ClientSize.Height);
-                context.Rasterizer.SetViewports(viewport);
+                viewport = new Viewport(0, 0, form.ClientSize.Width, form.ClientSize.Height);
+                context.Rasterizer.SetViewport(viewport);
                 context.OutputMerger.SetTargets(depthStencil, renderTarget);
             }
             catch (Exception ex)
@@ -283,8 +285,8 @@ namespace Apparat
 
                 CreateDepthStencilBuffer(width, height);
 
-                viewport = new Viewport(0.0f, 0.0f, width, height);
-                context.Rasterizer.SetViewports(viewport);
+                viewport = new Viewport(0, 0, width, height);
+                context.Rasterizer.SetViewport(viewport);
                 context.OutputMerger.SetTargets(depthStencil, renderTarget);
             }
             catch (Exception ex)

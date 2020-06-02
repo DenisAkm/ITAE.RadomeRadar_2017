@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SlimDX;
+using SharpDX;
+using SharpDX.D3DCompiler;
+using SharpDX.Direct3D;
+using SharpDX.DXGI;
+using SharpDX.Windows;
 
 namespace Apparat
 {
     public abstract class Camera
-    {
+    {        
         public Vector3 eye;
         public Vector3 target;
         public Vector3 up;
 
+        //public SharpDX.Mathematics.Interop.RawMatrix
         public Matrix view = Matrix.Identity;
         public Matrix perspective = Matrix.Identity;
         public Matrix viewPerspective = Matrix.Identity;

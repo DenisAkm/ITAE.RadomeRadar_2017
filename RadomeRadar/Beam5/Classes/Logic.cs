@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SharpDX;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
+
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -880,7 +881,7 @@ namespace Apparat
 
             if (startTheta <= finishTheta && startPhi <= finishPhi && stepTheta != 0 && stepPhi != 0)
             {
-                int blueCol = Color.FromArgb(30, 225, 225).ToArgb();
+                int blueCol = new Color(30, 225, 225).ToRgba();
                 Form1.Instance.renderControl1.Draw(lable, startTheta, finishTheta, stepTheta, startPhi, finishPhi, stepPhi, sys, blueCol);
             }
         }
@@ -922,7 +923,7 @@ namespace Apparat
             {
                 if (scanMPhiStart <= scanMPhiFinish && scanMPhiStep != 0 || !include2)
                 {
-                    int xCol = Color.FromArgb(255, 0, 128).ToArgb();
+                    int xCol = new Color(255, 0, 128).ToBgra();
                     Point3D p1a1 = new Point3D(axis1x1, axis1y1, axis1z1);
                     Point3D p2a1 = new Point3D(axis1x2, axis1y2, axis1z2);
                     Point3D p1a2 = new Point3D(axis2x1, axis2y1, axis2z1);
@@ -982,7 +983,7 @@ namespace Apparat
                     RadomeElement radomeTemplate = new RadomeElement(radome)
                     {
                         Lable = uniqueLable,
-                        Color = System.Drawing.Color.Transparent,
+                        Color = Color.Transparent,
                         Include = true
                     };
                     crf.tempRadome.Add(radomeTemplate);
@@ -1035,7 +1036,7 @@ namespace Apparat
                     using (UnitForm form = new UnitForm(Form1.Instance))
                     {
                         form.StartPosition = FormStartPosition.Manual;
-                        form.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
+                        form.Location = new System.Drawing.Point(Cursor.Position.X, Cursor.Position.Y);
                         form.ShowDialog();
                         dim = form.Dim;                        
                     }
@@ -2006,11 +2007,11 @@ namespace Apparat
         {
             float rangle = (float)(angle / 180 * CV.pi);
             
-            SlimDX.Vector3 rotAxis = new SlimDX.Vector3((float)(axisx2 - axisx1), (float)(axisy2 - axisy1), (float)(axisz2 - axisz1));
-            SlimDX.Matrix m = SlimDX.Matrix.RotationAxis(rotAxis, rangle);
+            SharpDX.Vector3 rotAxis = new SharpDX.Vector3((float)(axisx2 - axisx1), (float)(axisy2 - axisy1), (float)(axisz2 - axisz1));
+            SharpDX.Matrix m = SharpDX.Matrix.RotationAxis(rotAxis, rangle);
             
-            SlimDX.Vector3 shiftedCoord = new SlimDX.Vector3((float)(p.X - axisx1), (float)(p.Y - axisy1), (float)(p.Z - axisz1));
-            SlimDX.Vector3 rotCoord = SlimDX.Vector3.TransformCoordinate(shiftedCoord, m);
+            SharpDX.Vector3 shiftedCoord = new SharpDX.Vector3((float)(p.X - axisx1), (float)(p.Y - axisy1), (float)(p.Z - axisz1));
+            SharpDX.Vector3 rotCoord = SharpDX.Vector3.TransformCoordinate(shiftedCoord, m);
 
 
             return new Point3D((rotCoord.X + axisx1), (rotCoord.Y + axisy1), (rotCoord.Z + axisz1));

@@ -30,64 +30,64 @@ namespace Apparat
     private ShaderManager() { }
     #endregion
 
-    public EffectWrapperTransformEffectWireframe transformEffectWireFrame;
+    //public EffectWrapperTransformEffectWireframe transformEffectWireFrame;
     public EffectWrapperTransformEffect transformEffect;    
     public EffectWrapperColorEffectWireframe colorEffectWireframe;
-    public EffectWrapperTextureEffect textureEffect;
-    public EffectWrapperTexture3DEffect texture3DEffect;
-    public EffectWrapperColorEffectInstanced colorEffectInstanced;
-    public EffectWrapperColorEffectShaded colorEffectShaded;
-    public EffectWrapperEffectShaded effectShaded;
-    public EffectWrapperPhongBlinn effectPhongBlinn;
-    public EffectWrapperPhongTexture effectPhongTexture;
-    public EffectWrapperColorEffectFlat colorEffectFlat;
+    //public EffectWrapperTextureEffect textureEffect;
+    //public EffectWrapperTexture3DEffect texture3DEffect;
+    //public EffectWrapperColorEffectInstanced colorEffectInstanced;
+    //public EffectWrapperColorEffectShaded colorEffectShaded;
+    //public EffectWrapperEffectShaded effectShaded;
+    //public EffectWrapperPhongBlinn effectPhongBlinn;
+    //public EffectWrapperPhongTexture effectPhongTexture;
+    //public EffectWrapperColorEffectFlat colorEffectFlat;
 
     public void Init()
     {
-      transformEffectWireFrame = new EffectWrapperTransformEffectWireframe();
-      transformEffect = new EffectWrapperTransformEffect();      
-      colorEffectWireframe = new EffectWrapperColorEffectWireframe();
-      textureEffect = new EffectWrapperTextureEffect();
-      texture3DEffect = new EffectWrapperTexture3DEffect();
-      colorEffectInstanced = new EffectWrapperColorEffectInstanced();
-      colorEffectShaded = new EffectWrapperColorEffectShaded();
-      effectShaded = new EffectWrapperEffectShaded();
-      effectPhongBlinn = new EffectWrapperPhongBlinn();
-      effectPhongTexture = new EffectWrapperPhongTexture();
-      colorEffectFlat = new EffectWrapperColorEffectFlat();
-    }
+            //transformEffectWireFrame = new EffectWrapperTransformEffectWireframe();
+            transformEffect = new EffectWrapperTransformEffect();
+            colorEffectWireframe = new EffectWrapperColorEffectWireframe();
+            //textureEffect = new EffectWrapperTextureEffect();
+            //texture3DEffect = new EffectWrapperTexture3DEffect();
+            //colorEffectInstanced = new EffectWrapperColorEffectInstanced();
+            //colorEffectShaded = new EffectWrapperColorEffectShaded();
+            //effectShaded = new EffectWrapperEffectShaded();
+            //effectPhongBlinn = new EffectWrapperPhongBlinn();
+            //effectPhongTexture = new EffectWrapperPhongTexture();
+            //colorEffectFlat = new EffectWrapperColorEffectFlat();
+        }
 
     public void ShutDown()
     {
-        if (transformEffectWireFrame != null) transformEffectWireFrame.Dispose();
-        if (transformEffect != null) transformEffect.Dispose();        
-        if (colorEffectWireframe != null) colorEffectWireframe.Dispose();
-        if (textureEffect != null) textureEffect.Dispose();
-        if (texture3DEffect != null) texture3DEffect.Dispose();
-        if (colorEffectInstanced != null) colorEffectInstanced.Dispose();
-        if (colorEffectShaded != null) colorEffectShaded.Dispose();
-        if (effectShaded != null) effectShaded.Dispose();
-        if (effectPhongBlinn != null) effectPhongBlinn.Dispose();
-        if (effectPhongTexture != null) effectPhongTexture.Dispose();
-        if (colorEffectFlat != null) colorEffectFlat.Dispose();
-    }
+            //if (transformEffectWireFrame != null) transformEffectWireFrame.Dispose();
+            if (transformEffect != null) transformEffect.Dispose();
+            if (colorEffectWireframe != null) colorEffectWireframe.Dispose();
+            //if (textureEffect != null) textureEffect.Dispose();
+            //if (texture3DEffect != null) texture3DEffect.Dispose();
+            //if (colorEffectInstanced != null) colorEffectInstanced.Dispose();
+            //if (colorEffectShaded != null) colorEffectShaded.Dispose();
+            //if (effectShaded != null) effectShaded.Dispose();
+            //if (effectPhongBlinn != null) effectPhongBlinn.Dispose();
+            //if (effectPhongTexture != null) effectPhongTexture.Dispose();
+            //if (colorEffectFlat != null) colorEffectFlat.Dispose();
+        }
 
 
 
     public void LoadShaders()
     {
-      transformEffectWireFrame.Load();
-      transformEffect.Load();      
-      colorEffectWireframe.Load();
-      textureEffect.Load();
-      texture3DEffect.Load();
-      colorEffectInstanced.Load();
-      colorEffectShaded.Load();
-      effectShaded.Load();
-      effectPhongBlinn.Load();
-      effectPhongTexture.Load();
-      colorEffectFlat.Load();
-    }
+            //transformEffectWireFrame.Load();
+            transformEffect.Load();
+            colorEffectWireframe.Load();
+            //textureEffect.Load();
+            //texture3DEffect.Load();
+            //colorEffectInstanced.Load();
+            //colorEffectShaded.Load();
+            //effectShaded.Load();
+            //effectPhongBlinn.Load();
+            //effectPhongTexture.Load();
+            //colorEffectFlat.Load();
+        }
 
   }
 }

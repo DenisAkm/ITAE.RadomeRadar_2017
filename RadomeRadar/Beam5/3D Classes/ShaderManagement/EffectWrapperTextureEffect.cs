@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SlimDX.D3DCompiler;
-using SlimDX;
-using SlimDX.Direct3D11;
-using SlimDX.DXGI;
+using SharpDX.D3DCompiler;
+using SharpDX;
+using SharpDX.Direct3D11;
+using SharpDX.DXGI;
 using System.Runtime.InteropServices;
 using System.IO;
 
@@ -15,14 +15,14 @@ namespace Apparat.ShaderManagement
     {
         public ShaderBytecode effectByteCode;
         public Effect effect;
-        public ShaderSignature inputSignature;
+        public ShaderBytecode inputSignature;
         public EffectTechnique technique;
         public EffectPass pass;
         public InputLayout layout;
 
         public EffectMatrixVariable tmat;
         public EffectVectorVariable wireFrameColor;
-        public EffectResourceVariable textureResourceVariable;
+        public EffectShaderResourceVariable textureResourceVariable;
 
 
         InputElement[] elements = new[] { 
@@ -50,7 +50,7 @@ namespace Apparat.ShaderManagement
                 }
 
                 tmat = effect.GetVariableByName("gWVP").AsMatrix();
-                textureResourceVariable = effect.GetVariableByName("Texture").AsResource();
+                textureResourceVariable = effect.GetVariableByName("Texture").AsShaderResource();
 
                 layout = new InputLayout(DeviceManager.Instance.device, inputSignature, elements);
 

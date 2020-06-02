@@ -1,8 +1,8 @@
-﻿using System;
+﻿using SharpDX;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -160,13 +160,13 @@ namespace Apparat
             {
                 CameraManager.Instance.CameraAt(0);
 
-                SlimDX.Vector3 eye = CameraManager.Instance.returnCamera(0).eye;
-                SlimDX.Vector3 target = CameraManager.Instance.returnCamera(0).target;
-                SlimDX.Vector3 up = CameraManager.Instance.returnCamera(0).up;
+                SharpDX.Vector3 eye = CameraManager.Instance.returnCamera(0).eye;
+                SharpDX.Vector3 target = CameraManager.Instance.returnCamera(0).target;
+                SharpDX.Vector3 up = CameraManager.Instance.returnCamera(0).up;
 
-                SlimDX.Vector3 newEye = (eye - target);
+                SharpDX.Vector3 newEye = (eye - target);
                 newEye.Normalize();
-                newEye = SlimDX.Vector3.Multiply(newEye, (float)Logic.Instance.RadomeComposition.DiagonalSize * 3f) + target;
+                newEye = SharpDX.Vector3.Multiply(newEye, (float)Logic.Instance.RadomeComposition.DiagonalSize * 3f) + target;
                 CameraManager.Instance.returnCamera(0).eye = newEye; ;
                 CameraManager.Instance.returnCamera(0).SetView(newEye, target, up);
             }

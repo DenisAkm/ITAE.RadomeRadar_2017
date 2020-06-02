@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using SlimDX.D3DCompiler;
-using SlimDX;
-using SlimDX.Direct3D11;
-using SlimDX.DXGI;
+using SharpDX.D3DCompiler;
+using SharpDX;
+using SharpDX.Direct3D11;
+using SharpDX.DXGI;
 using System.Runtime.InteropServices;
 using System.Collections;
 using System.IO;
 using Apparat.ShaderManagement;
-
+using Color = System.Drawing.Color;
+using SharpDX.Direct3D;
 
 namespace Apparat
 {
     public class CoordSystem : Renderable
     {
-        SlimDX.Direct3D11.Buffer vertexBuffer;
-        SlimDX.Direct3D11.Buffer indexBuffer;
+        SharpDX.Direct3D11.Buffer vertexBuffer;
+        SharpDX.Direct3D11.Buffer indexBuffer;
         DataStream vertices;
         DataStream indices;
 
@@ -55,7 +56,7 @@ namespace Apparat
 
             vertices.Position = 0;
 
-            vertexBuffer = new SlimDX.Direct3D11.Buffer(
+            vertexBuffer = new SharpDX.Direct3D11.Buffer(
                DeviceManager.Instance.device,
                vertices,
                vertexBufferSizeInBytes,
@@ -78,7 +79,7 @@ namespace Apparat
 
             indices.Position = 0;
 
-            indexBuffer = new SlimDX.Direct3D11.Buffer(
+            indexBuffer = new SharpDX.Direct3D11.Buffer(
                 DeviceManager.Instance.device,
                 indices,
                 indexBufferSizeInBytes,

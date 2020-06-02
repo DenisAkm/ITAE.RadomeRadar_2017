@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
-using SlimDX;
+using SharpDX;
 using System.IO;
+using Color = SharpDX.Color;
 
 namespace Apparat
 {
@@ -371,7 +372,7 @@ namespace Apparat
             {
                 removingAntenna();
             }
-            Color color = System.Drawing.Color.FromArgb(50, 100, 100);
+            Color color = new Color(50, 100, 100);
             Antenna = new AntennaMesh("", points, color);
             Scene.Instance.addRenderObject(Antenna);
         }

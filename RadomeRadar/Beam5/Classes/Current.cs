@@ -138,12 +138,12 @@ namespace Apparat
         public static CVector ChangeLoadedCurrentAnlorithm(CVector v, DVector n, double angle)
         {
             float rangle = (float)(angle / 180 * CV.pi);
-            SlimDX.Matrix m = SlimDX.Matrix.RotationAxis(new SlimDX.Vector3((float)n.X, (float)n.Y, (float)n.Z), rangle);
-            SlimDX.Vector3 reV = new SlimDX.Vector3((float)v.X.Real, (float)v.Y.Real, (float)v.Z.Real);
-            SlimDX.Vector3 imV = new SlimDX.Vector3((float)v.X.Imaginary, (float)v.Y.Imaginary, (float)v.Z.Imaginary);
+            SharpDX.Matrix m = SharpDX.Matrix.RotationAxis(new SharpDX.Vector3((float)n.X, (float)n.Y, (float)n.Z), rangle);
+            SharpDX.Vector3 reV = new SharpDX.Vector3((float)v.X.Real, (float)v.Y.Real, (float)v.Z.Real);
+            SharpDX.Vector3 imV = new SharpDX.Vector3((float)v.X.Imaginary, (float)v.Y.Imaginary, (float)v.Z.Imaginary);
 
-            SlimDX.Vector3 reVrot = SlimDX.Vector3.TransformCoordinate(reV, m);
-            SlimDX.Vector3 imVrot = SlimDX.Vector3.TransformCoordinate(imV, m);
+            SharpDX.Vector3 reVrot = SharpDX.Vector3.TransformCoordinate(reV, m);
+            SharpDX.Vector3 imVrot = SharpDX.Vector3.TransformCoordinate(imV, m);
 
             return new CVector(new Complex(reVrot.X, imVrot.X), new Complex(reVrot.Y, imVrot.Y), new Complex(reVrot.Z, imVrot.Z));
         }        
