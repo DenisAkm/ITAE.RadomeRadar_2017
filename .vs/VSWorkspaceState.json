@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RadomeRadar",
+    "\\RadomeRadar\\Beam5",
+    "\\RadomeRadar\\Beam5\\3D Classes",
+    "\\RadomeRadar\\Beam5\\3D Classes\\New renderables"
   ],
   "PreviewInSolutionExplorer": false
 }
