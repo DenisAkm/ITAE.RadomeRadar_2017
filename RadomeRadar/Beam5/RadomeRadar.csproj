@@ -387,6 +387,23 @@
     <Content Include="Icons\Teal.bmp" />
     <Content Include="Icons\Violet.bmp" />
     <None Include="Icons\формула1.PNG" />
+    <Content Include="Shaders\colorEffect.fx" />
+    <Content Include="Shaders\ColorEffectInstanced.fx" />
+    <Content Include="Shaders\ColorEffectShaded.fx" />
+    <Content Include="Shaders\ColorEffectWireframe.fx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\EffectShaded.fx" />
+    <Content Include="Shaders\PhongBlinn.fx" />
+    <Content Include="Shaders\PhongTextured.fx" />
+    <Content Include="Shaders\texture3DEffect.fx" />
+    <Content Include="Shaders\textureEffect.fx" />
+    <Content Include="Shaders\transform.fx" />
+    <Content Include="Shaders\transformEffect.fx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\transformEffectWireframe.fx" />
+    <Content Include="Shaders\triangle.fx" />
     <Content Include="sharpdx_direct3d11_1_effects_x64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
