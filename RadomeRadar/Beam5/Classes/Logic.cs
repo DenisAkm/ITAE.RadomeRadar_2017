@@ -881,7 +881,7 @@ namespace Apparat
 
             if (startTheta <= finishTheta && startPhi <= finishPhi && stepTheta != 0 && stepPhi != 0)
             {
-                int blueCol = new Color(30, 225, 225).ToRgba();
+                Color blueCol = new Color(30, 225, 225);
                 Form1.Instance.renderControl1.Draw(lable, startTheta, finishTheta, stepTheta, startPhi, finishPhi, stepPhi, sys, blueCol);
             }
         }
@@ -923,7 +923,7 @@ namespace Apparat
             {
                 if (scanMPhiStart <= scanMPhiFinish && scanMPhiStep != 0 || !include2)
                 {
-                    int xCol = new Color(255, 0, 128).ToBgra();
+                    Color xCol = new Color(255, 0, 128);
                     Point3D p1a1 = new Point3D(axis1x1, axis1y1, axis1z1);
                     Point3D p2a1 = new Point3D(axis1x2, axis1y2, axis1z2);
                     Point3D p1a2 = new Point3D(axis2x1, axis2y1, axis2z1);
@@ -931,8 +931,6 @@ namespace Apparat
 
                     Form1.Instance.renderControl1.Draw(lable, center, n, include1, p1a1, p2a1, scanMThetaStart, scanMThetaFinish, scanMThetaStep, include2, p1a2, p2a2, scanMPhiStart, scanMPhiFinish, scanMPhiStep, xCol);
                 }
-
-
             }            
         }
         public void LoadRadomeElementMesh(CreateRadomeForm crf)
@@ -1376,7 +1374,7 @@ namespace Apparat
                         //Параметры части обтекателя
                         line = sr.ReadLine();                       //Параметры части обтекателя (цвет, название стенки, параметр включения):
                         arr = line.Split(delimiter);
-                        Color colorPart = CreateRadomeForm.colorDic[arr[1]];
+                        Color colorPart = DictionaryLibrary.СolorDictionary[arr[1]];
                         string stenkaLable = arr[2];
                         bool includeParameter = Convert.ToBoolean(arr[3]);
 
@@ -1734,7 +1732,7 @@ namespace Apparat
             {
                 sw.WriteLine(RadomeComposition[e].Lable);
                 sw.WriteLine(String.Format("Параметры части обтекателя (цвет, название стенки, параметр включения): \t{0}\t{1}\t{2}",
-                    CreateRadomeForm.colorDic.FirstOrDefault(x => x.Value == RadomeComposition[e].Color).Key, RadomeComposition[e].Structure.Lable, RadomeComposition[e].Include));
+                    DictionaryLibrary.СolorDictionary.FirstOrDefault(x => x.Value == RadomeComposition[e].Color).Key, RadomeComposition[e].Structure.Lable, RadomeComposition[e].Include));
 
                 sw.WriteLine("Координаты части обтекателя: \t");
 

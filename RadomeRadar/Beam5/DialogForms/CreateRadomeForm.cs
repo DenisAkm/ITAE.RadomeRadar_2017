@@ -16,17 +16,7 @@ namespace Apparat
         Form1 parentForm = null;
         public Radome tempRadome = new Radome();
         bool loading = false;
-
-        public static Dictionary<string, Color> colorDic = new Dictionary<string, Color>
-        {
-            {"Белый", Color.Transparent},
-            {"Синий", Color.Blue},
-            {"Красный", Color.Red},
-            {"Зелёный", Color.Green},
-            {"Жёлтый", Color.Yellow},
-            {"Серый", Color.Gray},
-            {"Оранжевый", Color.Orange}
-        };
+        Dictionary<string, Color> colorDic = DictionaryLibrary.СolorDictionary;
 
         public CreateRadomeForm(Form1 parent)
         {

@@ -9,6 +9,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Color = SharpDX.Color;
 
 namespace Apparat
 {
@@ -177,7 +178,7 @@ namespace Apparat
                 {
                     if (scanMPhiStart <= scanMPhiFinish && scanMPhiStep != 0 || !include2)
                     {
-                        int xCol = Color.FromArgb(255, 0, 128).ToArgb();
+                        Color xCol = new Color(255, 0, 128);
                         Point3D p1a1 = new Point3D(axis1x1, axis1y1, axis1z1);
                         Point3D p2a1 = new Point3D(axis1x2, axis1y2, axis1z2);
                         Point3D p1a2 = new Point3D(axis2x1, axis2y1, axis2z1);
@@ -212,7 +213,7 @@ namespace Apparat
 
                 if (startTheta <= finishTheta && startPhi <= finishPhi && stepTheta != 0 && stepPhi != 0)
                 {
-                    int blueCol = Color.FromArgb(30, 225, 225).ToArgb();
+                    Color blueCol = new Color(30, 225, 225);
                     parent.renderControl1.Draw(lable, startTheta, finishTheta, stepTheta, startPhi, finishPhi, stepPhi, sys, blueCol);
                 }
                 else
@@ -279,7 +280,7 @@ namespace Apparat
                 }
                 else
                 {
-                    textBoxApertureTitle.BackColor = Color.Red;
+                    textBoxApertureTitle.BackColor = System.Drawing.Color.Red;
                 }
             }            
         }    
@@ -380,7 +381,7 @@ namespace Apparat
                 }
                 catch (Exception)
                 {
-                    box.BackColor = Color.Red;
+                    box.BackColor = System.Drawing.Color.Red;
                     convertable = false;                    
                 }
             }
@@ -396,7 +397,7 @@ namespace Apparat
                     }
                     catch (Exception)
                     {
-                        box.BackColor = Color.Red;
+                        box.BackColor = System.Drawing.Color.Red;
                         convertable = false;
                     }                    
                 }
@@ -413,7 +414,7 @@ namespace Apparat
                     }
                     catch (Exception)
                     {
-                        box.BackColor = Color.Red;
+                        box.BackColor = System.Drawing.Color.Red;
                         convertable = false;
                     }
                 }

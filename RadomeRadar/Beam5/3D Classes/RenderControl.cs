@@ -102,7 +102,7 @@ namespace Apparat
         /// <param name="finishPhi"></param>
         /// <param name="stepPhi"></param>
         /// <param name="sys"></param>
-        public void Draw(string lable, double startTheta, double finishTheta, double stepTheta, double startPhi, double finishPhi, double stepPhi, int sys, int color)
+        public void Draw(string lable, double startTheta, double finishTheta, double stepTheta, double startPhi, double finishPhi, double stepPhi, int sys, Color color)
         {
             List<Point3D> list = new List<Point3D>();
 
@@ -153,7 +153,7 @@ namespace Apparat
             }
         }
 
-        public void Draw(string lable, Point3D center, DVector n, bool include1, Point3D a1p1, Point3D a1p2, double angle1Start, double angle1Finish, double angle1Step, bool include2, Point3D a2p1, Point3D a2p2, double angle2Start, double angle2Finish, double angle2Step, int color)
+        public void Draw(string lable, Point3D center, DVector n, bool include1, Point3D a1p1, Point3D a1p2, double angle1Start, double angle1Finish, double angle1Step, bool include2, Point3D a2p1, Point3D a2p2, double angle2Start, double angle2Finish, double angle2Step, Color color)
         {
             bool match = false;
             List<Point3D> scannigPointsList = new List<Point3D>();

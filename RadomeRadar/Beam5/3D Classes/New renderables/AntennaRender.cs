@@ -47,7 +47,7 @@ namespace Apparat
 
 
             float a, b, c;                        
-            int arbgColor = color.ToRgba();
+            int arbgColor = ToArbg(color); ;
 
             for (int i = 0; i < x.Count; i++)
             {
@@ -115,7 +115,7 @@ namespace Apparat
 
 
             float a, b, c;
-            int arbgColor = color.ToRgba();
+            int arbgColor = ToArbg(color);
 
             for (int i = 0; i < numVertices; i++)
             {

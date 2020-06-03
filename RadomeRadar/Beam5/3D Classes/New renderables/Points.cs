@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using SharpDX.D3DCompiler;
 using SharpDX;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using System.Runtime.InteropServices;
-using System.Collections;
-using System.IO;
 using Apparat.ShaderManagement;
-using Color = SharpDX.Color;
 using SharpDX.Direct3D;
 
 namespace Apparat
@@ -45,7 +38,7 @@ namespace Apparat
 
         EffectWrapperColorEffectWireframe ew = ShaderManager.Instance.colorEffectWireframe;
 
-        public Points(float size, string title, double startT, double finishT, double startP, double finishP, double stepT, double stepP, int scantype, int color, float disLevel)
+        public Points(float size, string title, double startT, double finishT, double startP, double finishP, double stepT, double stepP, int scantype, Color color, float disLevel)
         {
             Title = title;
             StartTheta = startT;
@@ -78,7 +71,7 @@ namespace Apparat
                     a = Rho * Math.Sin(alpha * pi / 180) * Math.Cos(startP * pi / 180);
                     b = Rho * Math.Sin(alpha * pi / 180) * Math.Sin(startP * pi / 180);
                     c = Rho * Math.Cos(alpha * pi / 180);
-                    vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(a), Convert.ToSingle(c), Convert.ToSingle(b)), color));
+                    vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(a), Convert.ToSingle(c), Convert.ToSingle(b)), ToArbg(color)));
                 }
                 else if (scantype == 1)
                 {
@@ -86,14 +79,14 @@ namespace Apparat
                     a = Rho * Math.Sin(alpha * pi / 180) * Math.Sin(startP * pi / 180);
                     b = Rho * Math.Cos(alpha * pi / 180);
 
-                    vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(a), Convert.ToSingle(c), Convert.ToSingle(b)), color));
+                    vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(a), Convert.ToSingle(c), Convert.ToSingle(b)), ToArbg(color)));
                 }
                 else if (scantype == 2)
                 {
                     b = Rho * Math.Sin(alpha * pi / 180) * Math.Cos(startP * pi / 180);
                     c = Rho * Math.Sin(alpha * pi / 180) * Math.Sin(startP * pi / 180);
                     a = Rho * Math.Cos(alpha * pi / 180);
-                    vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(a), Convert.ToSingle(c), Convert.ToSingle(b)), color));
+                    vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(a), Convert.ToSingle(c), Convert.ToSingle(b)), ToArbg(color)));
                 }
             }
 
@@ -133,7 +126,7 @@ namespace Apparat
                 0);
         }
 
-        public Points(float size, string title, List<Point3D> pointList, int color, float disLevel)
+        public Points(float size, string title, List<Point3D> pointList, Color color, float disLevel)
         {
             Title = title;
             vertexStride = Marshal.SizeOf(typeof(PositionColoredVertex)); // 16 bytes
@@ -145,7 +138,7 @@ namespace Apparat
             double Rho = disLevel * size;
             for (int i = 0; i < numVertices; i++)
             {
-                vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(Rho * pointList[i].X), Convert.ToSingle(Rho * pointList[i].Z), Convert.ToSingle(Rho * pointList[i].Y)), color));
+                vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(Rho * pointList[i].X), Convert.ToSingle(Rho * pointList[i].Z), Convert.ToSingle(Rho * pointList[i].Y)), ToArbg(color)));
             }
 
             vertices.Position = 0;
@@ -213,11 +206,11 @@ namespace Apparat
         {
             get
             {
-                return this.transform;
+                return transform;
             }
             set
             {
-                this.transform = value;
+                transform = value;
             }
         }
     }

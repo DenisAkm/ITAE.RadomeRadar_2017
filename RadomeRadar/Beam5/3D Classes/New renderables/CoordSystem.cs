@@ -124,11 +124,11 @@ namespace Apparat
         {
             get
             {
-                return this.transform;
+                return transform;
             }
             set
             {
-                this.transform = value;
+                transform = value;
             }
         }
 

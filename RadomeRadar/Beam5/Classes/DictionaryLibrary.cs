@@ -1,8 +1,5 @@
-﻿using System;
+﻿using SharpDX;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Apparat
 {
@@ -21,6 +18,17 @@ namespace Apparat
 
         public static Dictionary<int, string> PolarizationNamesShort = new Dictionary<int, string>() {
             { 0, "А" }, { 1, "Б" }, { 2, "CA" }, { 3, "CБ" }, { 4, "U" }
+        };
+
+        public static Dictionary<string, Color> СolorDictionary = new Dictionary<string, Color>
+        {
+            {"Белый", Color.Transparent},
+            {"Синий", Color.Blue},
+            {"Красный", Color.Red},
+            {"Зелёный", Color.Green},
+            {"Жёлтый", Color.Yellow},
+            {"Серый", Color.Gray},
+            {"Оранжевый", Color.Orange}
         };
     }
 }

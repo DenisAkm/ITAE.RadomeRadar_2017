@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using SharpDX.D3DCompiler;
 using SharpDX;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using System.Runtime.InteropServices;
 using Apparat.ShaderManagement;
-using System.Threading;
 using Color = SharpDX.Color;
 using SharpDX.Direct3D;
 
@@ -46,7 +41,7 @@ namespace Apparat
 
 
             float a, b, c;            
-            int arbgColor = color.ToRgba();
+            int arbgColor = ToArbg(color);
 
             for (int i = 0; i < x.Count; i++)
             {
@@ -113,16 +108,15 @@ namespace Apparat
 
             vertices = new DataStream(vertexBufferSizeInBytes, true, true);
 
-
             float a, b, c;
-            int arbgColor = color.ToRgba();
+            int argbColor = ToArbg(color); ;
 
             for (int i = 0; i < x.Count; i++)
             {
                 a = Convert.ToSingle(x[i]);
                 b = Convert.ToSingle(y[i]);
                 c = Convert.ToSingle(z[i]);
-                vertices.Write(new PositionColoredVertex(new Vector3(a, c, b), arbgColor));
+                vertices.Write(new PositionColoredVertex(new Vector3(a, c, b), argbColor));
             }
 
             vertices.Position = 0;

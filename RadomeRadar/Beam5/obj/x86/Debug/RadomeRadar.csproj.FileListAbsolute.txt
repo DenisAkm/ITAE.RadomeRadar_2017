@@ -38,7 +38,6 @@ C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x86\Debug
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x86\Debug\tr\ZedGraph.resources.dll
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x86\Debug\zh-cn\ZedGraph.resources.dll
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x86\Debug\zh-tw\ZedGraph.resources.dll
-C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\RadomeRadar.csprojAssemblyReference.cache
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\Apparat.RenderControl.resources
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\Apparat.CreateApertureForm.resources
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\Apparat.CreateRadomeForm.resources
@@ -52,3 +51,6 @@ C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\RadomeRadar.csproj.CopyComplete
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\RadomeRadar.exe
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\RadomeRadar.pdb
+C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x86\Debug\sharpdx_direct3d11_1_effects_x64.dll
+C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x86\Debug\sharpdx_direct3d11_1_effects_x86.dll
+C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x86\Debug\RadomeRadar.csproj.CoreCompileInputs.cache
