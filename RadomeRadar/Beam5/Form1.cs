@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -177,12 +178,10 @@ namespace Apparat
             //   Загрузка нового проекта
             //   
             Logic.Instance.ReturnNewProjectParam();
-
-
-            FarFieldC.SetDllDirectory(Path.Combine(Environment.CurrentDirectory));
-            //FarFieldC.SetDllDirectory2(@"C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\NearFieldLibrary\x64\Release");
-            //FarFieldC.SetDllDirectory3(@"C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\NearFieldLibrary\x64\Release");
-            NearFieldC.SetDllDirectory(Path.Combine(Environment.CurrentDirectory));
+            
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            FarFieldC.SetDllDirectory(path);
+            NearFieldC.SetDllDirectory(path);
         }
 
         

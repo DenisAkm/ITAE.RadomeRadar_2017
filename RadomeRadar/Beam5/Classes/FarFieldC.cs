@@ -13,8 +13,7 @@ namespace Apparat
 {
     unsafe public class FarFieldC
     {
-        #region Definition of dll methods
-        //@"C:\Users\Denis\YandexDisk\Work\RadomeRadar_Beta\RadomeRadar\NearFieldLibrary\x64\Release\Solver.dll"
+        #region Definition of dll methods        
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDllDirectory(string lpPathName);       

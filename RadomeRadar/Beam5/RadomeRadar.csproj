@@ -74,7 +74,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
@@ -182,7 +182,7 @@
     <Compile Include="Classes\Point3D.cs" />
     <Compile Include="Classes\SurfaceCurrent.cs" />
     <Compile Include="Classes\DVector.cs" />
-    <Compile Include="Classes\Graph.cs">
+    <Compile Include="Components\Graph.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Classes\Stenka.cs" />
