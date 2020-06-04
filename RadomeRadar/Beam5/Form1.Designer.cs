@@ -197,7 +197,7 @@ namespace Apparat
             this.toolStripMenuItemLoadNearField,
             this.toolStripMenuItemRemoveNearField});
             this.contextMenuStripNearField.Name = "contextMenuStripNearField";
-            this.contextMenuStripNearField.Size = new System.Drawing.Size(132, 70);
+            this.contextMenuStripNearField.Size = new System.Drawing.Size(129, 70);
             // 
             // toolStripMenuItemTurnOn
             // 
@@ -218,8 +218,8 @@ namespace Apparat
             // toolStripMenuItemRemoveNearField
             // 
             this.toolStripMenuItemRemoveNearField.Name = "toolStripMenuItemRemoveNearField";
-            this.toolStripMenuItemRemoveNearField.Size = new System.Drawing.Size(131, 22);
-            this.toolStripMenuItemRemoveNearField.Text = "Выгрузить";
+            this.toolStripMenuItemRemoveNearField.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemRemoveNearField.Text = "Удалить";
             this.toolStripMenuItemRemoveNearField.Click += new System.EventHandler(this.toolStripMenuItemRemoveNearField_Click);
             // 
             // tableLayoutPanel1
@@ -437,7 +437,7 @@ namespace Apparat
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(64, 68);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Сохранить токи";
+            this.button4.Text = "Сохранить поле";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button4.UseVisualStyleBackColor = true;
@@ -472,7 +472,7 @@ namespace Apparat
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(64, 68);
             this.button8.TabIndex = 7;
-            this.button8.Text = "Загрузить токи";
+            this.button8.Text = "Загрузить поле";
             this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button8.UseVisualStyleBackColor = true;
@@ -1140,6 +1140,7 @@ namespace Apparat
             this.вернутьПоУмолчаниюToolStripMenuItem.Name = "вернутьПоУмолчаниюToolStripMenuItem";
             this.вернутьПоУмолчаниюToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.вернутьПоУмолчаниюToolStripMenuItem.Text = "Вернуть по умолчанию";
+            this.вернутьПоУмолчаниюToolStripMenuItem.Click += new System.EventHandler(this.вернутьПоУмолчаниюToolStripMenuItem_Click);
             // 
             // режимПрезентацииToolStripMenuItem
             // 

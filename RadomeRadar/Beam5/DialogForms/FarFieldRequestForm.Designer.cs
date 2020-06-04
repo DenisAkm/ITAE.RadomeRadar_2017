@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FarFieldRequestForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxBodyAngle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxBodyAngleStep = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxBodyAngle = new System.Windows.Forms.TextBox();
+            this.comboBoxDirection = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxStep = new System.Windows.Forms.TextBox();
@@ -65,8 +68,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxDirection = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -136,16 +137,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(272, 94);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
-            // textBoxBodyAngle
-            // 
-            this.textBoxBodyAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBodyAngle.Location = new System.Drawing.Point(35, 36);
-            this.textBoxBodyAngle.Name = "textBoxBodyAngle";
-            this.textBoxBodyAngle.Size = new System.Drawing.Size(98, 20);
-            this.textBoxBodyAngle.TabIndex = 22;
-            this.textBoxBodyAngle.Text = "0";
-            this.textBoxBodyAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -167,6 +158,42 @@
             this.textBoxBodyAngleStep.TabIndex = 21;
             this.textBoxBodyAngleStep.Text = "0";
             this.textBoxBodyAngleStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(3, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 31);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "θ";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxBodyAngle
+            // 
+            this.textBoxBodyAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBodyAngle.Location = new System.Drawing.Point(35, 36);
+            this.textBoxBodyAngle.Name = "textBoxBodyAngle";
+            this.textBoxBodyAngle.Size = new System.Drawing.Size(98, 20);
+            this.textBoxBodyAngle.TabIndex = 22;
+            this.textBoxBodyAngle.Text = "0";
+            this.textBoxBodyAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // comboBoxDirection
+            // 
+            this.tableLayoutPanel5.SetColumnSpan(this.comboBoxDirection, 4);
+            this.comboBoxDirection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDirection.FormattingEnabled = true;
+            this.comboBoxDirection.Items.AddRange(new object[] {
+            "Азимутальная (XY)",
+            "Угломестная (YZ)"});
+            this.comboBoxDirection.Location = new System.Drawing.Point(3, 3);
+            this.comboBoxDirection.Name = "comboBoxDirection";
+            this.comboBoxDirection.Size = new System.Drawing.Size(266, 21);
+            this.comboBoxDirection.TabIndex = 23;
             // 
             // groupBox2
             // 
@@ -586,32 +613,6 @@
             this.label1.Text = "Название";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(3, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 31);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "θ";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // comboBoxDirection
-            // 
-            this.tableLayoutPanel5.SetColumnSpan(this.comboBoxDirection, 4);
-            this.comboBoxDirection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDirection.FormattingEnabled = true;
-            this.comboBoxDirection.Items.AddRange(new object[] {
-            "Азимутальная (XY)",
-            "Угломестная (YZ)"});
-            this.comboBoxDirection.Location = new System.Drawing.Point(3, 3);
-            this.comboBoxDirection.Name = "comboBoxDirection";
-            this.comboBoxDirection.Size = new System.Drawing.Size(266, 21);
-            this.comboBoxDirection.TabIndex = 23;
-            // 
             // FarFieldRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -619,6 +620,7 @@
             this.ClientSize = new System.Drawing.Size(304, 504);
             this.Controls.Add(this.tableLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FarFieldRequestForm";
             this.Text = "Расчёт поля дальней зоны";
             this.TopMost = true;

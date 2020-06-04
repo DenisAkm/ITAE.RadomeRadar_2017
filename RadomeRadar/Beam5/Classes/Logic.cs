@@ -38,7 +38,7 @@ namespace Apparat
         const char Eps = '\u03B5';
         const char Mu = '\u03BC';
         const string Format1 = "0.#####";
-        public static string ProgramName = "RadomeRadar v.1 Beta";
+        public static string ProgramName = "RadomeRadar v1.2 Beta";
 
         readonly float meshSizeParam = 7.2f;       //meshLength * K_0 < meshSizeParam
         public string ProjectAdress;
@@ -296,12 +296,10 @@ namespace Apparat
         }
         private bool CheckEnteredValuesBeforeStart()
         {
-            bool ans = true;
-
-            //if (!CheckMechSize())
-            //{
-            //    ans = false;
-            //}
+            if (!CheckMeshSize())
+            {
+                return false;
+            }
             //if (radioButtonCurrentUse.Checked)
             //{
             //    try
@@ -313,14 +311,9 @@ namespace Apparat
             //        textBox1.AppendText("Указан неверный путь к файлу с токами" + Environment.NewLine);
             //        ans = false;
             //    }
-            //}            
-            return ans;
-        }
-
-        private bool CheckMechSize()
-        {
+            //}
             return true;
-        }
+        }        
 
         private void Initialcondition()
         {
@@ -731,6 +724,7 @@ namespace Apparat
                         }
                     }
                     sw.Close();
+                    Form1.Instance.textBox1.AppendText("Результаты сохранены в папке: " + path + Environment.NewLine);
                 }
             }
             catch (Exception e)
@@ -1114,63 +1108,71 @@ namespace Apparat
         }
         public NearFieldC ReadNearField(Radome radome, String adress)
         {
-            StreamReader sr = new StreamReader(adress);
-            //CVector[] E = new CVector[radome.Count];
-            //CVector[] H = new CVector[radome.Count];
-            //Point3D[] P = new Point3D[radome.Count];
-
-
-            List<Complex> ex = new List<Complex>();
-            List<Complex> ey = new List<Complex>();
-            List<Complex> ez = new List<Complex>();
-            List<Complex> hx = new List<Complex>();
-            List<Complex> hy = new List<Complex>();
-            List<Complex> hz = new List<Complex>();
-            List<double> px = new List<double>();
-            List<double> py = new List<double>();
-            List<double> pz = new List<double>();
-
-            String line;
-
-            while (!(sr.EndOfStream))
+            try
             {
-                line = sr.ReadLine();
-
-                String[] substrings = line.Split(new[] { "\t" }, StringSplitOptions.None);
-
-                ex.Add(new Complex(Convert.ToDouble(substrings[0]), Convert.ToDouble(substrings[1])));
-                ey.Add(new Complex(Convert.ToDouble(substrings[2]), Convert.ToDouble(substrings[3])));
-                ez.Add(new Complex(Convert.ToDouble(substrings[4]), Convert.ToDouble(substrings[5])));
-                hx.Add(new Complex(Convert.ToDouble(substrings[6]), Convert.ToDouble(substrings[7])));
-                hy.Add(new Complex(Convert.ToDouble(substrings[8]), Convert.ToDouble(substrings[9])));
-                hz.Add(new Complex(Convert.ToDouble(substrings[10]), Convert.ToDouble(substrings[11])));
-                px.Add((Convert.ToDouble(substrings[12])));
-                py.Add((Convert.ToDouble(substrings[13])));
-                pz.Add((Convert.ToDouble(substrings[14])));
-
-            }
-            sr.Close();
+                StreamReader sr = new StreamReader(adress);
+                //CVector[] E = new CVector[radome.Count];
+                //CVector[] H = new CVector[radome.Count];
+                //Point3D[] P = new Point3D[radome.Count];
 
 
-            if (radome.CountElements == ex.Count)
-            {
-                NearFieldC nfc = new NearFieldC(ex.Count);
-                for (int i = 0; i < ex.Count; i++)
+                List<Complex> ex = new List<Complex>();
+                List<Complex> ey = new List<Complex>();
+                List<Complex> ez = new List<Complex>();
+                List<Complex> hx = new List<Complex>();
+                List<Complex> hy = new List<Complex>();
+                List<Complex> hz = new List<Complex>();
+                List<double> px = new List<double>();
+                List<double> py = new List<double>();
+                List<double> pz = new List<double>();
+
+                String line;
+
+                while (!(sr.EndOfStream))
                 {
-                    nfc[i].E = new CVector(ex[i], ey[i], ez[i]);
-                    nfc[i].H = new CVector(hx[i], hy[i], hz[i]);
-                    nfc[i].Place = new Point3D(px[i], py[i], pz[i]);
+                    line = sr.ReadLine();
+
+                    String[] substrings = line.Split(new[] { "\t" }, StringSplitOptions.None);
+
+                    ex.Add(new Complex(Convert.ToDouble(substrings[0]), Convert.ToDouble(substrings[1])));
+                    ey.Add(new Complex(Convert.ToDouble(substrings[2]), Convert.ToDouble(substrings[3])));
+                    ez.Add(new Complex(Convert.ToDouble(substrings[4]), Convert.ToDouble(substrings[5])));
+                    hx.Add(new Complex(Convert.ToDouble(substrings[6]), Convert.ToDouble(substrings[7])));
+                    hy.Add(new Complex(Convert.ToDouble(substrings[8]), Convert.ToDouble(substrings[9])));
+                    hz.Add(new Complex(Convert.ToDouble(substrings[10]), Convert.ToDouble(substrings[11])));
+                    px.Add((Convert.ToDouble(substrings[12])));
+                    py.Add((Convert.ToDouble(substrings[13])));
+                    pz.Add((Convert.ToDouble(substrings[14])));
+
                 }
-                Form1.Instance.textBox1.AppendText("Поле внутри обтекателя загружено" + Environment.NewLine);
-                Form1.Instance.toolStripMenuItemTurnOn.Checked = true;
-                Form1.Instance.toolStripMenuItemTurnOn.Enabled = true;
-                return nfc;
+                sr.Close();
+
+
+                if (radome.CountElements == ex.Count)
+                {
+                    NearFieldC nfc = new NearFieldC(ex.Count);
+                    for (int i = 0; i < ex.Count; i++)
+                    {
+                        nfc[i].E = new CVector(ex[i], ey[i], ez[i]);
+                        nfc[i].H = new CVector(hx[i], hy[i], hz[i]);
+                        nfc[i].Place = new Point3D(px[i], py[i], pz[i]);
+                    }
+                    Form1.Instance.textBox1.AppendText("Поле внутри обтекателя загружено" + Environment.NewLine);
+                    Form1.Instance.toolStripMenuItemTurnOn.Checked = true;
+                    Form1.Instance.toolStripMenuItemTurnOn.Enabled = true;
+                    return nfc;
+                }
+                else
+                {
+                    Form1.Instance.textBox1.AppendText("Ошибка загрузки поля внутри обтекателя" + Environment.NewLine);
+                    return null;
+                }
             }
-            else
+            catch (Exception)
             {
-                Form1.Instance.textBox1.AppendText("Ошибка загрузки поля внутри обтекателя" + Environment.NewLine);
+                Form1.Instance.textBox1.AppendText("Файл не читается, поле не загружено" + Environment.NewLine);
                 return null;
-            }
+            }            
         }
 
         private bool ReadProjectFile(string projectAdress)
@@ -1870,7 +1872,7 @@ namespace Apparat
         }
 
 
-        public void ShowMeshSize()
+        public bool CheckMeshSize()
         {
             double maxfr = 0;
             if (Frequencies.Count != 0)
@@ -1901,10 +1903,12 @@ namespace Apparat
             if (maxSize < optimaL)
             {
                 Form1.Instance.textBox1.AppendText("Размер элемента геометрии обтекателя " + maxSize + " ( < " + optimaL + ")" + Environment.NewLine);
+                return true;
             }
             else
             {
                 Form1.Instance.textBox1.AppendText("Превышен максимальный размер элемента геометрии обтекателя (" + maxSize + " > " + optimaL + ")" + Environment.NewLine);
+                return false;
             }
         }
 

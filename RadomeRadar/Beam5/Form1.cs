@@ -173,13 +173,14 @@ namespace Apparat
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            
             renderControl1.Init();                 
             //
             //   Загрузка нового проекта
             //   
             Logic.Instance.ReturnNewProjectParam();
             
-            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             FarFieldC.SetDllDirectory(path);
             NearFieldC.SetDllDirectory(path);
         }
@@ -250,12 +251,8 @@ namespace Apparat
 
         }      // Start        
         private void button8_Click(object sender, EventArgs e)
-        {            
-            //openFileDialog1.FilterIndex = 5;
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    //textBoxUseCurrents.Text = openFileDialog1.FileName;
-            //}
+        {
+            Logic.Instance.LoadNearFiled();
         }      // загрузка токов        
         
         private void button15_Click(object sender, EventArgs e)
@@ -281,7 +278,7 @@ namespace Apparat
         
         private void button1_Click(object sender, EventArgs e)
         {
-            Logic.Instance.ShowMeshSize();
+            Logic.Instance.CheckMeshSize();
         }
 
         //*******************************************//
@@ -409,38 +406,7 @@ namespace Apparat
                 renderControl1.ChangeCamera(3);
             }
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (checkBox1.Checked)
-            //{
 
-            //    if (checkBox2.Checked)
-            //    {
-            //        renderControl1.Draw(Radome);
-            //        renderControl1.Draw(Antenna);
-            //    }
-            //    else
-            //    {
-            //        renderControl1.Draw(Radome); //
-            //    }
-            //}
-            //else
-            //{
-            //    renderControl1.Remove(Radome);
-            //}
-
-        }
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (checkBox2.Checked)
-            //{
-            //    renderControl1.Draw(Antenna);
-            //}
-            //else
-            //{
-            //    renderControl1.Remove(Antenna);
-            //}
-        }
         //***************************//
         //********Операторы**********//
         //***************************//
@@ -1580,6 +1546,11 @@ namespace Apparat
         private void режимПрезентацииToolStripMenuItem_Click(object sender, EventArgs e)
         {
             renderControl1.RunPresentation();
+        }
+
+        private void вернутьПоУмолчаниюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            renderControl1.SetPriviousView();
         }
     }   
 }

@@ -11,6 +11,7 @@ using SharpDX;
 using System.IO;
 using Color = SharpDX.Color;
 using System.Threading.Tasks;
+using MathNet.Numerics.LinearAlgebra.Complex;
 
 namespace Apparat
 {
@@ -35,6 +36,8 @@ namespace Apparat
 
         const float phi = 30;
         const float theta = 50;
+
+        Vector3[] LastLoadedLook = new Vector3[3];
 
         delegate void setFPS(string fps);
         void Instance_FPSCalculatedEvent(string fps)
@@ -393,6 +396,7 @@ namespace Apparat
             Vector3 eye = new Vector3(4, 2, 5);
             Vector3 target = new Vector3(0, 0, 0);
             Vector3 up = new Vector3(0, 1, 0);
+            LastLoadedLook = new Vector3[3] { eye, target, up };
 
             CameraManager.Instance.returnCamera(0).eye = eye;
             CameraManager.Instance.returnCamera(0).target = target;
@@ -418,7 +422,7 @@ namespace Apparat
             CameraManager.Instance.returnCamera(0).up = up;
             CameraManager.Instance.returnCamera(0).SetView(eye, target, up);
 
-            //ReScaleGridAndArrows(1f / 2f * (float)obj.DiagonalSize);
+            LastLoadedLook = new Vector3[3] { eye, target, up };
             CameraManager.Instance.returnCamera(0).SizeObject = (float)obj.DiagonalSize;
         }
         public void LookAt(Aperture obj)
@@ -440,8 +444,9 @@ namespace Apparat
             CameraManager.Instance.returnCamera(0).up = up;
             CameraManager.Instance.returnCamera(0).SetView(eye, target, up);
 
+            LastLoadedLook = new Vector3[3] { eye, target, up };
             //ReScaleGridAndArrows(1f / 2f * (float)obj.DiagonalSize);
-            //CameraManager.Instance.returnCamera(0).SizeObject = (float)obj.DiagonalSize;
+            CameraManager.Instance.returnCamera(0).SizeObject = (float)obj.DiagonalSize;
         }
         public void LookAt(Aperture Aperture, Radome Radome)
         {
@@ -464,6 +469,7 @@ namespace Apparat
             CameraManager.Instance.returnCamera(0).SetView(eye, target, up);
 
             //ReScaleGridAndArrows(1f / 2f * (float)Radome.DiagonalSize);
+            LastLoadedLook = new Vector3[3] { eye, target, up };
             CameraManager.Instance.returnCamera(0).SizeObject = (float)Radome.DiagonalSize;
         }
         #endregion
@@ -605,8 +611,13 @@ namespace Apparat
                 }
             }
             catch (Exception)
-            {
+            {   
             }
+        }
+
+        public void SetPriviousView()
+        {
+            CameraManager.Instance.currentCamera.SetView(LastLoadedLook[0], LastLoadedLook[1], LastLoadedLook[2]);            
         }
         #endregion
 
