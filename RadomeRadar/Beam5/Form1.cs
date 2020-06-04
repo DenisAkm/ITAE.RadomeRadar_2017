@@ -46,8 +46,10 @@ namespace Apparat
         public bool lockdata = false;
 
         public TreeNode selectedNode {get; set;}
-
-               
+        public RenderControl renderControl1;
+        public Graph GraphControl;
+        public ExTreeView treeViewResults;
+        public ExTreeView treeViewConfiguration;
 
 
         //***************************//
@@ -56,12 +58,113 @@ namespace Apparat
         public Form1()
         {
             InitializeComponent();
+            CustomInitialization();
             instance = this;            
         }
+
+        private void CustomInitialization()
+        {
+            //
+            //  renderControl1
+            //
+            renderControl1 = new RenderControl();
+            tableLayoutPanel7.Controls.Add(renderControl1, 1, 0);
+            renderControl1.BackColor = System.Drawing.Color.LightGray;
+            renderControl1.ContextMenuStrip = contextMenuStripCamera;
+            renderControl1.Dock = DockStyle.Fill;
+            renderControl1.Location = new System.Drawing.Point(558, 3);
+            renderControl1.Name = "renderControl1";
+            tableLayoutPanel7.SetRowSpan(renderControl1, 2);
+            renderControl1.ScaleFactor = 1F;
+            renderControl1.Size = new System.Drawing.Size(1023, 570);
+            renderControl1.TabIndex = 0;
+            renderControl1.TabStop = false;
+            ActiveControl = renderControl1;
+            //
+            //  treeViewConfiguration
+            //
+            treeViewConfiguration = new ExTreeView();
+            treeViewConfiguration.Dock = DockStyle.Fill;
+            treeViewConfiguration.Location = new System.Drawing.Point(3, 18);
+            treeViewConfiguration.Name = "treeViewConfiguration";
+            TreeNode treeNode1 = new TreeNode("Параметры стенок");
+            TreeNode treeNode2 = new TreeNode("Частота[]");
+            TreeNode treeNode3 = new TreeNode("Геометрия обтекателя");
+            TreeNode treeNode4 = new TreeNode("Источник");
+            TreeNode treeNode5 = new TreeNode("Поле в обтекателе");
+            TreeNode treeNode6 = new TreeNode("Задача");
+            treeNode1.ContextMenuStrip = contextMenuStripCreateStenka;
+            treeNode1.Name = "Stenka";
+            treeNode1.Text = "Параметры стенок";
+            treeNode2.ContextMenuStrip = contextMenuStripFrequency;
+            treeNode2.Name = "frequency";
+            treeNode2.Text = "Частота[]";
+            treeNode3.Name = "Radome";
+            treeNode3.Text = "Геометрия обтекателя";
+            treeNode4.ContextMenuStrip = contextMenuStripSource;
+            treeNode4.Name = "Source";
+            treeNode4.Text = "Источник";
+            treeNode5.ContextMenuStrip = contextMenuStripNearField;
+            treeNode5.Name = "NearField";
+            treeNode5.Text = "Поле в обтекателе";
+            treeNode6.Name = "Request";
+            treeNode6.Text = "Задача";
+            treeViewConfiguration.Nodes.AddRange(new TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6});
+            treeViewConfiguration.Size = new System.Drawing.Size(543, 549);
+            treeViewConfiguration.TabIndex = 0;
+            treeViewConfiguration.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewConfiguration_NodeMouseClick);
+            treeViewConfiguration.DoubleClick += new System.EventHandler(treeViewConfiguration_DoubleClick);
+            groupBox18.Controls.Add(treeViewConfiguration);
+            //
+            //  GraphControl
+            //
+            GraphControl = new Graph();
+            GraphControl.Dock = DockStyle.Fill;
+            GraphControl.IsEnableSelection = true;
+            GraphControl.Location = new System.Drawing.Point(558, 3);
+            GraphControl.Name = "GraphControl";
+            GraphControl.ScrollGrace = 0D;
+            GraphControl.ScrollMaxX = 0D;
+            GraphControl.ScrollMaxY = 0D;
+            GraphControl.ScrollMaxY2 = 0D;
+            GraphControl.ScrollMinX = 0D;
+            GraphControl.ScrollMinY = 0D;
+            GraphControl.ScrollMinY2 = 0D;
+            GraphControl.Size = new System.Drawing.Size(1023, 570);
+            GraphControl.TabIndex = 0;
+            GraphControl.UseExtendedPrintDialog = true;
+            GraphControl.ZoomStepFraction = 0.2D;
+            tableLayoutPanel6.Controls.Add(GraphControl, 1, 0);
+            tableLayoutPanel6.SetRowSpan(GraphControl, 2);
+            //
+            //  treeViewResults
+            //
+            treeViewResults = new ExTreeView();
+            treeViewResults.CheckBoxes = true;
+            treeViewResults.Dock = DockStyle.Fill;
+            treeViewResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            treeViewResults.HideSelection = false;
+            treeViewResults.Location = new System.Drawing.Point(0, 0);
+            treeViewResults.Margin = new Padding(0, 0, 1, 0);
+            treeViewResults.Name = "treeViewResults";
+            treeViewResults.Size = new System.Drawing.Size(542, 469);
+            treeViewResults.TabIndex = 0;
+            treeViewResults.AfterCheck += new TreeViewEventHandler(treeViewResults_AfterCheck);
+            treeViewResults.BeforeSelect += new TreeViewCancelEventHandler(treeViewResults_BeforeSelect);
+            treeViewResults.AfterSelect += new TreeViewEventHandler(treeViewResults_AfterSelect);
+            tableLayoutPanel2.Controls.Add(treeViewResults, 0, 0);
+        }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.TopMost = true;
-            if (MessageBox.Show("Вы хотите сохранить проект перед выходом?", Logic.ProgramName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            TopMost = true;
+            if (MessageBox.Show("Вы хотите сохранить проект перед выходом?", Logic.ProgramName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
                 Logic.Instance.FastSaveScenario();
             }
@@ -207,9 +310,9 @@ namespace Apparat
         }       //OpenFileDialog      
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы уверены, что хотите закрыть программу?", Logic.ProgramName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Вы уверены, что хотите закрыть программу?", Logic.ProgramName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                this.Close();
+                Close();
             }
         }
 
@@ -853,7 +956,7 @@ namespace Apparat
             // contextMenuStripConfiguration
             // 
             cms.BackColor = System.Drawing.SystemColors.Control;
-            cms.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            cms.Items.AddRange(new ToolStripItem[] {
             Change,
             Copy,
             Exclude,
@@ -904,7 +1007,7 @@ namespace Apparat
             // contextMenuStripConfiguration
             // 
             cms.BackColor = System.Drawing.SystemColors.Control;
-            cms.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {            
+            cms.Items.AddRange(new ToolStripItem[] {            
             Delete});
             cms.Name = node.Text;
             cms.Size = new System.Drawing.Size(139, 70);            
@@ -929,7 +1032,7 @@ namespace Apparat
             // contextMenuStripConfiguration
             // 
             cms.BackColor = System.Drawing.SystemColors.Control;
-            cms.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            cms.Items.AddRange(new ToolStripItem[] {
             Change,
             Copy,
             Delete});
@@ -1475,16 +1578,9 @@ namespace Apparat
             textBox1.AppendText("Поле в обтекателе выгружено" + Environment.NewLine);
         }
 
-        
-
-        
-
-        
-
-        
-
-       
-
-       
+        private void режимПрезентацииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            renderControl1.RunPresentation();
+        }
     }   
 }

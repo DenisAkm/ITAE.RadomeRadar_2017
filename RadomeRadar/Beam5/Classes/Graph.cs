@@ -52,6 +52,11 @@ namespace Apparat
         }
         private void InitializeComponent()
         {
+            
+        }
+
+        private void CustomizeGraph()
+        {
             string[] setOfcolors = new string[]{"#e5194a","#27509e","#20252a","#fbbe18","#29b297","#26295a","#4ebbbc","#ec6593","#a79258",
                 "#ef7c52","#e4524f","#32bce9","#3b3b3b","#f3e737","#e83b6e","#3baa36","#e6322a","#19365f","#fadd13","#202230","#eb6626",
                 "#e41d32","#1ba1a5","#1a3c55","#040506","#6bba7c","#d72125","#c6ccd2","#f8af42","#715291","#e95254","#1a65ae","#b8ce36",
@@ -59,9 +64,9 @@ namespace Apparat
                 "#238b94","#39bcdd","#f4cf39","#109338","#e67a5c","#fbf0a3","#22b6ea","#82bb26","#212a31","#8ac4cd","#ede439","#e94a54","#1c9675"};
 
             for (int i = 0; i < setOfcolors.Length; i++)
-			{
+            {
                 uniqueColors[i] = ColorTranslator.FromHtml(setOfcolors[i]);//
-			}
+            }
 
 
 
@@ -162,7 +167,7 @@ namespace Apparat
             //    curve.Line.Width = 2F;
             //    curve.Symbol.Size = 2F;
             //}
-            
+
             //for (int i = 0; i < CurveNames.Count; i++)
             //{
             //    myPane.CurveList[i].IsVisible = false;

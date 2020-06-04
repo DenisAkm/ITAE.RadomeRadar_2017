@@ -33,7 +33,7 @@ namespace Apparat
             {
                 sizeObject = value;
             }
-        }
+        }       
 
         public void SetPerspective(float fov, float aspect, float znear, float zfar)
         {

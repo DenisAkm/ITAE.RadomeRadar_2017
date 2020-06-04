@@ -221,3 +221,4 @@ C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x64\Relea
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x64\Release\RadomeRadar.pdb
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x64\Release\Shaders\ColorEffectWireframe.fx
 C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\bin\x64\Release\Shaders\transformEffect.fx
+C:\Users\User\Source\Repos\RadomeRadar_Beta_2019\RadomeRadar\Beam5\obj\x64\Release\RadomeRadar.csprojAssemblyReference.cache

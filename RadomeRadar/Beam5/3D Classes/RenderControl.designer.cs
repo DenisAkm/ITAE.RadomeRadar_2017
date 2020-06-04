@@ -1,6 +1,8 @@
-﻿namespace Apparat
+﻿using System.Windows.Forms;
+
+namespace Apparat
 {
-    partial class RenderControl
+    partial class RenderControl: UserControl
     {
         /// <summary> 
         /// Required designer variable.

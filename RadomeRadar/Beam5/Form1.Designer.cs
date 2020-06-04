@@ -35,12 +35,6 @@ namespace Apparat
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Параметры стенок");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Частота[]");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Геометрия обтекателя");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Источник");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Поле в обтекателе");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Задача");
             this.contextMenuStripCreateStenka = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.createNewStenka = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripFrequency = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -84,11 +78,6 @@ namespace Apparat
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.contextMenuStripCamera = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.начальныйВидToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.видToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.видСпередиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.видСзадиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -108,6 +97,7 @@ namespace Apparat
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStripTextBox1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripCamera = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новыйПроектToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,10 +111,8 @@ namespace Apparat
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.renderControl1 = new Apparat.RenderControl();
-            this.treeViewConfiguration = new Apparat.ExTreeView();
-            this.GraphControl = new Apparat.Graph();
-            this.treeViewResults = new Apparat.ExTreeView();
+            this.вернутьПоУмолчаниюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.режимПрезентацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripCreateStenka.SuspendLayout();
             this.contextMenuStripFrequency.SuspendLayout();
             this.contextMenuStripSource.SuspendLayout();
@@ -139,8 +127,6 @@ namespace Apparat
             this.tabControl3.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.contextMenuStripCamera.SuspendLayout();
-            this.groupBox18.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -150,6 +136,7 @@ namespace Apparat
             this.tableLayoutPanel9.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripTextBox1.SuspendLayout();
+            this.contextMenuStripCamera.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -792,7 +779,6 @@ namespace Apparat
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 555F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Controls.Add(this.renderControl1, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.groupBox18, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
@@ -803,43 +789,8 @@ namespace Apparat
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1584, 576);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
-            // contextMenuStripCamera
-            // 
-            this.contextMenuStripCamera.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.начальныйВидToolStripMenuItem,
-            this.видToolStripMenuItem1,
-            this.видСпередиToolStripMenuItem,
-            this.видСзадиToolStripMenuItem});
-            this.contextMenuStripCamera.Name = "contextMenuStripCamera";
-            this.contextMenuStripCamera.Size = new System.Drawing.Size(205, 92);
-            // 
-            // начальныйВидToolStripMenuItem
-            // 
-            this.начальныйВидToolStripMenuItem.Name = "начальныйВидToolStripMenuItem";
-            this.начальныйВидToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.начальныйВидToolStripMenuItem.Text = "Вернуть по умолчанию";
-            // 
-            // видToolStripMenuItem1
-            // 
-            this.видToolStripMenuItem1.Name = "видToolStripMenuItem1";
-            this.видToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
-            this.видToolStripMenuItem1.Text = "Вид справа";
-            // 
-            // видСпередиToolStripMenuItem
-            // 
-            this.видСпередиToolStripMenuItem.Name = "видСпередиToolStripMenuItem";
-            this.видСпередиToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.видСпередиToolStripMenuItem.Text = "Вид спереди";
-            // 
-            // видСзадиToolStripMenuItem
-            // 
-            this.видСзадиToolStripMenuItem.Name = "видСзадиToolStripMenuItem";
-            this.видСзадиToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.видСзадиToolStripMenuItem.Text = "Вид сзади";
-            // 
             // groupBox18
             // 
-            this.groupBox18.Controls.Add(this.treeViewConfiguration);
             this.groupBox18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox18.Location = new System.Drawing.Point(3, 3);
@@ -866,7 +817,6 @@ namespace Apparat
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 555F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.GraphControl, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.groupBox6, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
@@ -895,7 +845,6 @@ namespace Apparat
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.treeViewResults, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 18);
@@ -1090,6 +1039,14 @@ namespace Apparat
             this.toolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
             this.toolStripMenuItem1.Text = "Очистить";
             // 
+            // contextMenuStripCamera
+            // 
+            this.contextMenuStripCamera.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вернутьПоУмолчаниюToolStripMenuItem,
+            this.режимПрезентацииToolStripMenuItem});
+            this.contextMenuStripCamera.Name = "contextMenuStripCamera";
+            this.contextMenuStripCamera.Size = new System.Drawing.Size(205, 70);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1178,85 +1135,19 @@ namespace Apparat
             // 
             this.saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             // 
-            // renderControl1
+            // вернутьПоУмолчаниюToolStripMenuItem
             // 
-            this.renderControl1.BackColor = System.Drawing.Color.LightGray;
-            this.renderControl1.ContextMenuStrip = this.contextMenuStripCamera;
-            this.renderControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderControl1.Location = new System.Drawing.Point(558, 3);
-            this.renderControl1.Name = "renderControl1";
-            this.tableLayoutPanel7.SetRowSpan(this.renderControl1, 2);
-            this.renderControl1.ScaleFactor = 1F;
-            this.renderControl1.Size = new System.Drawing.Size(1023, 570);
-            this.renderControl1.TabIndex = 0;
-            this.renderControl1.TabStop = false;
+            this.вернутьПоУмолчаниюToolStripMenuItem.Name = "вернутьПоУмолчаниюToolStripMenuItem";
+            this.вернутьПоУмолчаниюToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.вернутьПоУмолчаниюToolStripMenuItem.Text = "Вернуть по умолчанию";
             // 
-            // treeViewConfiguration
+            // режимПрезентацииToolStripMenuItem
             // 
-            this.treeViewConfiguration.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewConfiguration.Location = new System.Drawing.Point(3, 18);
-            this.treeViewConfiguration.Name = "treeViewConfiguration";
-            treeNode1.ContextMenuStrip = this.contextMenuStripCreateStenka;
-            treeNode1.Name = "Stenka";
-            treeNode1.Text = "Параметры стенок";
-            treeNode2.ContextMenuStrip = this.contextMenuStripFrequency;
-            treeNode2.Name = "frequency";
-            treeNode2.Text = "Частота[]";
-            treeNode3.Name = "Radome";
-            treeNode3.Text = "Геометрия обтекателя";
-            treeNode4.ContextMenuStrip = this.contextMenuStripSource;
-            treeNode4.Name = "Source";
-            treeNode4.Text = "Источник";
-            treeNode5.ContextMenuStrip = this.contextMenuStripNearField;
-            treeNode5.Name = "NearField";
-            treeNode5.Text = "Поле в обтекателе";
-            treeNode6.Name = "Request";
-            treeNode6.Text = "Задача";
-            this.treeViewConfiguration.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6});
-            this.treeViewConfiguration.Size = new System.Drawing.Size(543, 549);
-            this.treeViewConfiguration.TabIndex = 0;
-            this.treeViewConfiguration.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewConfiguration_NodeMouseClick);
-            this.treeViewConfiguration.DoubleClick += new System.EventHandler(this.treeViewConfiguration_DoubleClick);
-            // 
-            // GraphControl
-            // 
-            this.GraphControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GraphControl.IsEnableSelection = true;
-            this.GraphControl.Location = new System.Drawing.Point(558, 3);
-            this.GraphControl.Name = "GraphControl";
-            this.tableLayoutPanel6.SetRowSpan(this.GraphControl, 2);
-            this.GraphControl.ScrollGrace = 0D;
-            this.GraphControl.ScrollMaxX = 0D;
-            this.GraphControl.ScrollMaxY = 0D;
-            this.GraphControl.ScrollMaxY2 = 0D;
-            this.GraphControl.ScrollMinX = 0D;
-            this.GraphControl.ScrollMinY = 0D;
-            this.GraphControl.ScrollMinY2 = 0D;
-            this.GraphControl.Size = new System.Drawing.Size(1023, 570);
-            this.GraphControl.TabIndex = 0;
-            this.GraphControl.UseExtendedPrintDialog = true;
-            this.GraphControl.ZoomStepFraction = 0.2D;
-            // 
-            // treeViewResults
-            // 
-            this.treeViewResults.CheckBoxes = true;
-            this.treeViewResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.treeViewResults.HideSelection = false;
-            this.treeViewResults.Location = new System.Drawing.Point(0, 0);
-            this.treeViewResults.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.treeViewResults.Name = "treeViewResults";
-            this.treeViewResults.Size = new System.Drawing.Size(542, 469);
-            this.treeViewResults.TabIndex = 0;
-            this.treeViewResults.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeViewResults_AfterCheck);
-            this.treeViewResults.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewResults_BeforeSelect);
-            this.treeViewResults.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewResults_AfterSelect);
+            this.режимПрезентацииToolStripMenuItem.CheckOnClick = true;
+            this.режимПрезентацииToolStripMenuItem.Name = "режимПрезентацииToolStripMenuItem";
+            this.режимПрезентацииToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.режимПрезентацииToolStripMenuItem.Text = "Режим презентации";
+            this.режимПрезентацииToolStripMenuItem.Click += new System.EventHandler(this.режимПрезентацииToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -1289,8 +1180,6 @@ namespace Apparat
             this.tabControl3.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
-            this.contextMenuStripCamera.ResumeLayout(false);
-            this.groupBox18.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1304,6 +1193,7 @@ namespace Apparat
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.contextMenuStripTextBox1.ResumeLayout(false);
+            this.contextMenuStripCamera.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1325,8 +1215,7 @@ namespace Apparat
         //************************//
         //****Double Constants****//
         //************************//
-        private System.Windows.Forms.TabControl tabControl1;
-        public Apparat.RenderControl renderControl1;
+        private System.Windows.Forms.TabControl tabControl1;        
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button button2;
@@ -1340,8 +1229,7 @@ namespace Apparat
         private System.Windows.Forms.ToolStripMenuItem сохранитьПроектToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьМодельКакToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.ImageList imageList2;
-        public Graph GraphControl;
+        private System.Windows.Forms.ImageList imageList2;        
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
@@ -1351,17 +1239,11 @@ namespace Apparat
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripCamera;
-        private System.Windows.Forms.ToolStripMenuItem начальныйВидToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem видСпередиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem видСзадиToolStripMenuItem;
         private System.Windows.Forms.Button button8;
-        public ExTreeView treeViewResults;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox18;
-        public ExTreeView treeViewConfiguration;
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -1402,6 +1284,8 @@ namespace Apparat
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         public System.Windows.Forms.RadioButton radioButtonX2;
         public System.Windows.Forms.RadioButton radioButtonX1;
+        private System.Windows.Forms.ToolStripMenuItem вернутьПоУмолчаниюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem режимПрезентацииToolStripMenuItem;
     }
 }
 

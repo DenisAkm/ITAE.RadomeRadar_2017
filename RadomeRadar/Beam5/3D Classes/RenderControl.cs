@@ -10,6 +10,7 @@ using System.Collections;
 using SharpDX;
 using System.IO;
 using Color = SharpDX.Color;
+using System.Threading.Tasks;
 
 namespace Apparat
 {
@@ -586,6 +587,26 @@ namespace Apparat
         private void RenderControl_Resize(object sender, EventArgs e)
         {
             RenderManager.Instance.resize = true;
+        }
+
+        internal async void RunPresentation()
+        {
+            try
+            {
+                OrbitPanCamera cam = (OrbitPanCamera)CameraManager.Instance.currentCamera;                            
+                
+                if (cam.IsPresentationRunning)
+                {
+                    await Task.Run(() => cam.StopRotationY());
+                }
+                else
+                {
+                    await Task.Run(() => cam.RunRotationY());            
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
         #endregion
 

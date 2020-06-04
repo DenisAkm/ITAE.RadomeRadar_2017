@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 using SharpDX;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
@@ -27,8 +29,9 @@ namespace Apparat
         #endregion
 
         float rotY = 0;
+        public bool IsPresentationRunning { get; set; } = false;
 
-        public void rotateY(int value)
+        public void rotateY(float value)
         {
             rotY = (value / 100.0f);
             Vector3 eyeLocal = eye - target;
@@ -42,9 +45,10 @@ namespace Apparat
         float rotOrtho = 0;
 
         public void rotateOrtho(int value)
-        {
+        {            
             Vector3 viewDir = target - eye;
             Vector3 orhto = Vector3.Cross(viewDir, up);
+            orhto.Normalize();
 
             rotOrtho = (value / 100.0f);
             Matrix rotOrthoMat = Matrix.RotationAxis(orhto, rotOrtho);
@@ -185,15 +189,46 @@ namespace Apparat
 
         public override void KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-
+            string input = e.KeyChar.ToString();
+            if (input == "a" || input == "ф")
+            {
+                rotateY(-2);
+            }
+            if (input == "d" || input == "в")
+            {
+                rotateY(2);
+            }
+            if (input == "w" || input == "ц")
+            {
+                rotateOrtho(1);
+            }
+            if (input == "s" || input == "ы")
+            {
+                rotateOrtho(-1);
+            }            
         }
 
         public override void KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-        {
+        {   
         }
 
         public override void KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        {            
+        }
+
+        public void RunRotationY()
         {
+            IsPresentationRunning = true;
+            while (IsPresentationRunning)
+            {                
+                rotateY(0.1f);
+                Thread.Sleep(10);
+            }
+        }
+
+        internal void StopRotationY()
+        {
+            IsPresentationRunning = false;
         }
     }
 }
