@@ -98,6 +98,8 @@ namespace Apparat
             this.contextMenuStripTextBox1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripCamera = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.вернутьПоУмолчаниюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.режимПрезентацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новыйПроектToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,14 +107,11 @@ namespace Apparat
             this.сохранитьПроектToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьМодельКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.вернутьПоУмолчаниюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.режимПрезентацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripCreateStenka.SuspendLayout();
             this.contextMenuStripFrequency.SuspendLayout();
             this.contextMenuStripSource.SuspendLayout();
@@ -204,21 +203,21 @@ namespace Apparat
             this.toolStripMenuItemTurnOn.CheckOnClick = true;
             this.toolStripMenuItemTurnOn.Enabled = false;
             this.toolStripMenuItemTurnOn.Name = "toolStripMenuItemTurnOn";
-            this.toolStripMenuItemTurnOn.Size = new System.Drawing.Size(131, 22);
+            this.toolStripMenuItemTurnOn.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemTurnOn.Text = "Вкл/Выкл";
             this.toolStripMenuItemTurnOn.Click += new System.EventHandler(this.toolStripMenuItemTurnOn_Click);
             // 
             // toolStripMenuItemLoadNearField
             // 
             this.toolStripMenuItemLoadNearField.Name = "toolStripMenuItemLoadNearField";
-            this.toolStripMenuItemLoadNearField.Size = new System.Drawing.Size(131, 22);
+            this.toolStripMenuItemLoadNearField.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemLoadNearField.Text = "Загрузить";
             this.toolStripMenuItemLoadNearField.Click += new System.EventHandler(this.toolStripMenuItemLoadNearField_Click);
             // 
             // toolStripMenuItemRemoveNearField
             // 
             this.toolStripMenuItemRemoveNearField.Name = "toolStripMenuItemRemoveNearField";
-            this.toolStripMenuItemRemoveNearField.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemRemoveNearField.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemRemoveNearField.Text = "Удалить";
             this.toolStripMenuItemRemoveNearField.Click += new System.EventHandler(this.toolStripMenuItemRemoveNearField_Click);
             // 
@@ -1045,13 +1044,27 @@ namespace Apparat
             this.вернутьПоУмолчаниюToolStripMenuItem,
             this.режимПрезентацииToolStripMenuItem});
             this.contextMenuStripCamera.Name = "contextMenuStripCamera";
-            this.contextMenuStripCamera.Size = new System.Drawing.Size(205, 70);
+            this.contextMenuStripCamera.Size = new System.Drawing.Size(205, 48);
+            // 
+            // вернутьПоУмолчаниюToolStripMenuItem
+            // 
+            this.вернутьПоУмолчаниюToolStripMenuItem.Name = "вернутьПоУмолчаниюToolStripMenuItem";
+            this.вернутьПоУмолчаниюToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.вернутьПоУмолчаниюToolStripMenuItem.Text = "Вернуть по умолчанию";
+            this.вернутьПоУмолчаниюToolStripMenuItem.Click += new System.EventHandler(this.вернутьПоУмолчаниюToolStripMenuItem_Click);
+            // 
+            // режимПрезентацииToolStripMenuItem
+            // 
+            this.режимПрезентацииToolStripMenuItem.CheckOnClick = true;
+            this.режимПрезентацииToolStripMenuItem.Name = "режимПрезентацииToolStripMenuItem";
+            this.режимПрезентацииToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.режимПрезентацииToolStripMenuItem.Text = "Режим презентации";
+            this.режимПрезентацииToolStripMenuItem.Click += new System.EventHandler(this.режимПрезентацииToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.видToolStripMenuItem,
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -1106,12 +1119,6 @@ namespace Apparat
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
-            // видToolStripMenuItem
-            // 
-            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
-            this.видToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.видToolStripMenuItem.Text = "Параметры";
-            // 
             // помощьToolStripMenuItem
             // 
             this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1123,8 +1130,9 @@ namespace Apparat
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -1134,21 +1142,6 @@ namespace Apparat
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            // 
-            // вернутьПоУмолчаниюToolStripMenuItem
-            // 
-            this.вернутьПоУмолчаниюToolStripMenuItem.Name = "вернутьПоУмолчаниюToolStripMenuItem";
-            this.вернутьПоУмолчаниюToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.вернутьПоУмолчаниюToolStripMenuItem.Text = "Вернуть по умолчанию";
-            this.вернутьПоУмолчаниюToolStripMenuItem.Click += new System.EventHandler(this.вернутьПоУмолчаниюToolStripMenuItem_Click);
-            // 
-            // режимПрезентацииToolStripMenuItem
-            // 
-            this.режимПрезентацииToolStripMenuItem.CheckOnClick = true;
-            this.режимПрезентацииToolStripMenuItem.Name = "режимПрезентацииToolStripMenuItem";
-            this.режимПрезентацииToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.режимПрезентацииToolStripMenuItem.Text = "Режим презентации";
-            this.режимПрезентацииToolStripMenuItem.Click += new System.EventHandler(this.режимПрезентацииToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -1209,7 +1202,6 @@ namespace Apparat
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem загрузкаМоделиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
 
 

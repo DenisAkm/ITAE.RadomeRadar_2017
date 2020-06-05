@@ -1817,7 +1817,7 @@ namespace Apparat
             //    MessageBox.Show(e.Message);
             //}
         }
-        private void NearFieledSaving(String adress, NearFieldC radomeFieled)
+        public void NearFieledSaving(String adress, NearFieldC radomeFieled)
         {
             StreamWriter sw = new StreamWriter(adress);
 

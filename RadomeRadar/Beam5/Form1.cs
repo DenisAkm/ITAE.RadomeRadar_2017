@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -52,7 +53,11 @@ namespace Apparat
         public ExTreeView treeViewResults;
         public ExTreeView treeViewConfiguration;
 
+        [DllImport("Solver.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern string GetSolverVersion();
 
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDllDirectory(string lpPathName);
         //***************************//
         //*******Функции формы*******//
         //***************************//
@@ -183,9 +188,10 @@ namespace Apparat
             
             FarFieldC.SetDllDirectory(path);
             NearFieldC.SetDllDirectory(path);
+            Form1.SetDllDirectory(path);
         }
 
-        
+               
 
         //***************************//
         //******Кнопки на форме******//
@@ -209,21 +215,18 @@ namespace Apparat
         
         // выгрузка графиков
         private void button4_Click(object sender, EventArgs e)
-        {            
-            //renderControl1.pause();
-
-            //if (RadomeCurrent == null)
-            //{
-            //    textBox1.Text += "Токи не рассчитаны" + Environment.NewLine;
-            //}
-            //else
-            //{
-            //    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            //    {
-            //        textBoxUseCurrents.Text = saveFileDialog1.FileName;
-            //        CurrentSaving(saveFileDialog1.FileName, RadomeCurrent);
-            //    }
-            //}
+        {
+            if (Logic.Instance.RadomeNearField == null)
+            {
+                textBox1.Text += "Токи не рассчитаны" + Environment.NewLine;
+            }
+            else
+            {
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    Logic.Instance.NearFieledSaving(saveFileDialog1.FileName, Logic.Instance.RadomeNearField);
+                }
+            }
         }      // Выгрузка токов                
         private void button6_Click(object sender, EventArgs e)
         {
@@ -1551,6 +1554,25 @@ namespace Apparat
         private void вернутьПоУмолчаниюToolStripMenuItem_Click(object sender, EventArgs e)
         {
             renderControl1.SetPriviousView();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Version numerics = Assembly.LoadFrom("MathNet.Numerics.dll").GetName().Version;
+            Version sharpdx = Assembly.LoadFrom("SharpDX.dll").GetName().Version;
+            string solver = GetSolverVersion();
+            Version graphVersion = Assembly.LoadFrom("ZedGraph.dll").GetName().Version;
+
+            string message = $"Информация о сборке:\n" +
+                $"• MathNet.Numerics.dll (версия {numerics})\n" +
+                $"• Sharp.dll (версия {sharpdx})\n" +
+                $"• Solver.dll (версия {solver})\n" +
+                $"• ZedGraph.dll (версия {graphVersion})\n\n" +
+                $"Информация по разработке: denis.akimov16@gmail.com\n\n" +
+                $"Системные требования:\n" +
+                $"• 64-разрядная ОС Windows 7, Windows 8 и Windows 10\n" +
+                $"• .Net Framework не ниже версии 4.7.2\n";
+            MessageBox.Show(message);
         }
     }   
 }
