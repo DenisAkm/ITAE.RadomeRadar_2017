@@ -37,15 +37,23 @@ namespace Apparat
             }
         }
         #endregion
-        
-        
+
+        [DllImport("Solver.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern string GetSolverVersion();
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDllDirectory(string lpPathName);
 
         public bool Loading;           
         public bool Error;
-
-
+        
         //написать что блокирует!!!
         public bool lockdata = false;
+
+        public static Version NumericsVersion { get; private set; }
+        public static Version SharpVersion { get; private set; }
+        public static string SolverVersion { get; private set; }
+        public static Version GraphVersion { get; private set; }
 
         public TreeNode selectedNode {get; set;}
         public RenderControl renderControl1;
@@ -53,11 +61,6 @@ namespace Apparat
         public ExTreeView treeViewResults;
         public ExTreeView treeViewConfiguration;
 
-        [DllImport("Solver.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern string GetSolverVersion();
-
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern bool SetDllDirectory(string lpPathName);
         //***************************//
         //*******Функции формы*******//
         //***************************//
@@ -191,7 +194,13 @@ namespace Apparat
             Form1.SetDllDirectory(path);
         }
 
-               
+        void SetVersion()
+        {
+            NumericsVersion = Assembly.LoadFrom("MathNet.Numerics.dll").GetName().Version;
+            SharpVersion = Assembly.LoadFrom("SharpDX.dll").GetName().Version;
+            SolverVersion = Form1.GetSolverVersion();
+            GraphVersion = Assembly.LoadFrom("ZedGraph.dll").GetName().Version;
+        }
 
         //***************************//
         //******Кнопки на форме******//
@@ -1558,21 +1567,17 @@ namespace Apparat
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Version numerics = Assembly.LoadFrom("MathNet.Numerics.dll").GetName().Version;
-            Version sharpdx = Assembly.LoadFrom("SharpDX.dll").GetName().Version;
-            string solver = GetSolverVersion();
-            Version graphVersion = Assembly.LoadFrom("ZedGraph.dll").GetName().Version;
 
             string message = $"Информация о сборке:\n" +
-                $"• MathNet.Numerics.dll (версия {numerics})\n" +
-                $"• Sharp.dll (версия {sharpdx})\n" +
-                $"• Solver.dll (версия {solver})\n" +
-                $"• ZedGraph.dll (версия {graphVersion})\n\n" +
+                $"• MathNet.Numerics.dll (версия {NumericsVersion})\n" +
+                $"• Sharp.dll (версия {SharpVersion})\n" +
+                $"• Solver.dll (версия {SolverVersion})\n" +
+                $"• ZedGraph.dll (версия {GraphVersion})\n\n" +
                 $"Информация по разработке: denis.akimov16@gmail.com\n\n" +
                 $"Системные требования:\n" +
                 $"• 64-разрядная ОС Windows 7, Windows 8 и Windows 10\n" +
                 $"• .Net Framework не ниже версии 4.7.2\n";
-            MessageBox.Show(message);
+            MessageBox.Show(message, "О программе");
         }
     }   
 }

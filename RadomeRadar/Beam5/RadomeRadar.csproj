@@ -158,6 +158,8 @@
     <Compile Include="3D Classes\Camera\OrbitPanCamera.cs" />
     <Compile Include="3D Classes\New renderables\CoordSystem.cs" />
     <Compile Include="3D Classes\New renderables\ScanRegionRender.cs" />
+    <Compile Include="3D Classes\New renderables\VPoint.cs" />
+    <Compile Include="3D Classes\New renderables\VPoints.cs" />
     <Compile Include="3D Classes\RenderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

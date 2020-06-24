@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,10 +33,14 @@ namespace Apparat
         #endregion
 
         #region Constructor
-        private Logic() { }
+        private Logic()         
+        {
+            
+        }
         #endregion
 
-        #region Global Variables
+        #region Global Variables               
+
         const char Eps = '\u03B5';
         const char Mu = '\u03BC';
         const string Format1 = "0.#####";
@@ -775,7 +781,7 @@ namespace Apparat
             Form1.Instance.openFileDialog1.InitialDirectory = Environment.CurrentDirectory;
             if (Form1.Instance.openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                bool exception = false;
+                bool exception;
                 try
                 {
                     exception = !ReadProjectFile(Form1.Instance.openFileDialog1.FileName);
@@ -850,9 +856,7 @@ namespace Apparat
                     else if(SourceTemplate2.Scanning == 2)
                     {
                         LoadMScanningPoints(SourceTemplate2.Lable);
-                    }
-
-                    
+                    }                    
 
                     Form1.Instance.textBox1.AppendText("Проект загружен: на апертуре " + apCount + " элементов, на обтекателе " + radCount + " элементов" + Environment.NewLine);
                 }
