@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Apparat
 {
-    public class ScanRegionRender: Points
+    public class ScanRegionRender: VPoints
     {
         public ScanRegionRender(float size, string title, double startT, double finishT, double startP, double finishP, double stepT, double stepP, int scantype, Color color)
             : base(size, title, startT, finishT, startP, finishP, stepT, stepP, scantype, color, 1.2f)

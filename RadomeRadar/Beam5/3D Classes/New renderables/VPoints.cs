@@ -126,19 +126,29 @@ namespace Apparat
                 0);
         }
 
-        public VPoints(float size, string title, List<Point3D> pointList, Color color, float disLevel)
+        public VPoints(float size, string title, List<Point3D> point3DList, Color color, float disLevel)
         {
             Title = title;
             vertexStride = Marshal.SizeOf(typeof(PositionColoredVertex)); // 16 bytes
-            numVertices = pointList.Count;
+
+            List<VPoint> pointList = VPoint.CreateList(point3DList);
+
+            for (int i = 0; i < pointList.Count; i++)
+            {
+                numVertices += pointList[i].Count;
+            }
+
 
             vertexBufferSizeInBytes = vertexStride * numVertices;
             vertices = new DataStream(vertexBufferSizeInBytes, true, true);
 
             double Rho = disLevel * size;
-            for (int i = 0; i < numVertices; i++)
+            for (int i = 0; i < pointList.Count; i++)
             {
-                vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(Rho * pointList[i].X), Convert.ToSingle(Rho * pointList[i].Z), Convert.ToSingle(Rho * pointList[i].Y)), ToArbg(color)));
+                for (int j = 0; j < pointList[i].Count; j++)
+                {
+                    vertices.Write(new PositionColoredVertex(new Vector3(Convert.ToSingle(Rho * pointList[i][j].X), Convert.ToSingle(Rho * pointList[i][j].Z), Convert.ToSingle(Rho * pointList[i][j].Y)), ToArbg(color)));
+                }
             }
 
             vertices.Position = 0;
