@@ -131,7 +131,7 @@ namespace Apparat
             Title = title;
             vertexStride = Marshal.SizeOf(typeof(PositionColoredVertex)); // 16 bytes
 
-            List<VPoint> pointList = VPoint.CreateList(point3DList);
+            List<VPoint> pointList = VPoint.CreateList(point3DList, size);
 
             for (int i = 0; i < pointList.Count; i++)
             {

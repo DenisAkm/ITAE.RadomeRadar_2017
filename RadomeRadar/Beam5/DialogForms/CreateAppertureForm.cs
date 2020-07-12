@@ -114,10 +114,9 @@ namespace Apparat
             }
             else
             {
+                reducting = true;
                 LoadParametersFromSourceTemplate();
-            }
-            
-
+            }            
 
             templateLable = SourceTemplate2.Lable;
             if (comboBoxScanning.SelectedIndex == 1)
@@ -128,7 +127,7 @@ namespace Apparat
             {
                 ShowMScanningPoints(templateLable);    
             }
-            reducting = true;
+            
             Show();
         }
 

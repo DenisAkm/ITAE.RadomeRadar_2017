@@ -35,18 +35,18 @@ namespace Apparat
             }
         }
         
-        public VPoint(Point3D point)
+        public VPoint(Point3D point, float size)
         {
             vertices = new List<Vector3>();
 
-            int PnumVertices = 16;
-            int VnumVertices = 16;
+            int PnumVertices = 8;
+            int VnumVertices = 4;
 
             double a_center = point.X;
             double b_center = point.Y;
             double c_center = point.Z;
 
-            double r = 0.01;
+            double r = size * 0.001f;
 
             for (int i = 0; i < PnumVertices; i++)
             {
@@ -63,13 +63,14 @@ namespace Apparat
             }
         }
 
-        internal static List<VPoint> CreateList(List<Point3D> point3DList)
+        internal static List<VPoint> CreateList(List<Point3D> point3DList, float size)
         {
             List<VPoint> vPointList = new List<VPoint>();
 
+
             for (int k = 0; k < point3DList.Count; k++)
             {
-                vPointList.Add(new VPoint(point3DList[k]));
+                vPointList.Add(new VPoint(point3DList[k], size));
             }
             return vPointList;
         }
