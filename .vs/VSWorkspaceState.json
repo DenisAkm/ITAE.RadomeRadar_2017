@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\RadomeRadar"
+    "\\RadomeRadar",
+    "\\RadomeRadar\\Beam5",
+    "\\RadomeRadar\\Beam5\\3D Classes",
+    "\\RadomeRadar\\Beam5\\3D Classes\\New renderables",
+    "\\RadomeRadar\\Beam5\\DialogForms"
   ],
-  "SelectedNode": "\\RadomeRadar\\Beam5",
+  "SelectedNode": "\\RadomeRadar\\Beam5\\DialogForms\\CreateAppertureForm.cs",
   "PreviewInSolutionExplorer": false
 }

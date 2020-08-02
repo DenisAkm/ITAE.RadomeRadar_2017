@@ -22,7 +22,7 @@ namespace Apparat
 
         public static Dictionary<string, Color> СolorDictionary = new Dictionary<string, Color>
         {
-            {"Белый", Color.Transparent},
+            {"Белый", Color.White},
             {"Синий", Color.Blue},
             {"Красный", Color.Red},
             {"Зелёный", Color.Green},
